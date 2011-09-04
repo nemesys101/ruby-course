@@ -1,75 +1,106 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
 <head>
-  <meta charset='utf-8'>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Taller Ruby On Rails Montevideo</title>
+	<meta name="description" content="Taller gratuito sobre Ruby y Ruby on Rails. Cupos limitados">
+	<meta name="author" content="Gabriela Rodriguez, Veronica Rebagliatte">
+	<link rel="shortcut icon" href="media/favicon.ico">
+	<link rel="stylesheet" href="media/stylesheets/base.css" type="text/css" />
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- Asynchronous google analytics; this is the official snippet. Replace UA-XXXXXX-XX with your site's ID and uncomment to enable.
+	<script>
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+	  _gaq.push(['_trackPageview']);
 
-  <title>gabelula/ruby-course @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #87a68c;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #785973; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #785973; }
-    h3 { text-align: center; color: #785973; }
-    a { color: #785973; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+	-->
 </head>
-
-<body>
-  <a href="http://github.com/gabelula/pdx-ruby-course"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/gabelula/pdx-ruby-course/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/gabelula/pdx-ruby-course/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="http://github.com/gabelula/pdx-ruby-course">ruby-course</a>
-      <span class="small">por <a href="http://github.com/gabelula">gabelula</a></span></h1>
-
-    <div class="description">
-      Esta era la presentacion de un taller sobre ruby/rails Portland, OR. Ahora lo cambiamos para adaptarse al taller de ruby/rails en Montevideo. 
-    </div>
-
-    <h2>Authors</h2>
-    <p>Audrey Eschright (spinnerin arroba gmail.com)<br/>Caylee Hogg<br/><br/>Gabriela Rodriguez (gabelula arroba gmail.com)<br/>Los participantes de <a href="http://pdxtechworkshops.org">PDX Tech Workshops</a><br/></p>
-
-
-    <h2>Download</h2>
-    <p>
-      Puedes descargar este projecto en formato 
-      <a href="http://github.com/gabelula/ruby-course/zipball/master">zip</a> o
-      <a href="http://github.com/gabelula/ruby-course/tarball/master">tar</a>.
-    </p>
-    <p>O puedes clonear el proyecto con <a href="http://git-scm.com">Git</a>
-      ejecutando:
-      <pre>$ git clone git://github.com/gabelula/ruby-course</pre>
-    </p>
-
-    <div class="footer">
-      toma el código fuente en GitHub : <a href="http://github.com/gabelula/ruby-course">gabelula/ruby-course</a>
-    </div>
-
-  </div>
-
-  
+<body lang="es" class="about">
+	<header class="main">
+		<div class="wrapper">
+			<h1><a href="index.html">Taller de Ruby On Rails</a></h1>
+			<nav>
+				<h1 class="hidden">Navegacion principal</h1>
+				<ul>
+					<li><a href="register.html">Registro</a></li>
+					<li><a href="about.html">Sobre el taller</a></li>
+					<li><a href="slides.html">Slides</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<section>
+		<h1>Sobre el taller</h1>
+		<p>Esta era la presentacion de un taller sobre ruby/rails Portland, OR. Ahora lo cambiamos para adaptarse al taller de ruby/rails en Montevideo.</p>
+	</section>
+	<div class="wrapper">
+		<section class="authors">
+			<h1>Autores</h1>
+			<ul>
+				<li>
+					<a href="http://github.com/caylee-hogg" title="Ver el perfil de Caylee Hogg en Github" class="vcard">
+						<img alt="Caylee Hogg" src="media/images/authors/audrey.png"/>
+						<h2><span class="fn">Audrey Eschright</span>, <span class="nickname">Caylee Hogg</span></h2>
+						<p>spinnerin arroba gmail.com</p>
+					</a>
+				</li>
+				<li>
+					<a href="http://github.com/gabelula" title="Ver el perfil de Gaba en Github" class="vcard">
+						<img alt="Gaba" src="media/images/authors/gaba.png"/>
+						<h2><span class="fn">Gabriela Rodriguez</span>, <span class="nickname">Gaba</span></h2>
+						<p>gabelula arroba gmail.com</p>
+					</a>
+				</li>
+				<li class="last">
+					Los participantes de <a title="Vistar el sitio de PDX Tech Workshops" href="http://pdxtechworkshops.org">PDX Tech Workshops</a>
+				</li>
+			</ul>
+		</section>
+		<section class="downloads">
+			<h1>Descargas</h1>
+			<ul>
+				<li>
+					<a class="btn green-btn" href="http://github.com/gabelula/ruby-course/zipball/master">
+						<span class="icon dowload-icon"></span>
+						Descargar en formato .ZIP
+					</a>
+				</li>
+				<li>
+					<a class="btn green-btn" href="http://github.com/gabelula/ruby-course/tarball/master">
+						<span class="icon dowload-icon"></span>
+						Descargar en formato .TAR
+					</a>
+				</li>
+				<li>
+					O puedes clonar el proyecto con <a href="http://git-scm.com">Git</a> ejecutando:
+					<pre>$ git clone git://github.com/gabelula/ruby-course</pre>
+				</li>
+			</ul>
+		</section>
+	</div>
+	<footer>
+		<ul class="wrapper">
+			<li><a class="email" href="">Suscribirme por email</a></li>
+			<li><a class="rss" href="">RSS</a></li>
+			<li><a class="calendar" href="">Agendar con Google Calendar</a></li>
+			<li><a class="github" href="http://github.com/gabelula/ruby-course">Ver el código fuente en Github</a></li>
+		</ul>
+	</footer>
+	<a class="fork-me" href="http://github.com/gabelula/ruby-course"><span>Fork me on Github</span></a>
+	<script type="text/javascript" src="http://disqus.com/forums/tallerderubyonrails/embed.js"></script>
 </body>
 </html>
