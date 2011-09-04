@@ -19,7 +19,6 @@ body {
 h1, h2, h3 {
   margin-bottom: 24px;
   font-weight: bold;
-  clear: both;
 }
 h1 {
   font-size: 1.5em;
@@ -243,7 +242,6 @@ body.about a:hover img {
 	border-color: #006CC9;
 }
 body.about h2 {
-	clear: none;
 	margin-bottom: 0.5em;
 }
 body.about .wrapper section {
