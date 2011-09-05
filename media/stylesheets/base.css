@@ -322,6 +322,13 @@ body.about .volunteers {
 }
 
 /* IE ************************************************/
-.footer {
+.ie6 .wrapper,
+.ie6 section,
+.ie7 .wrapper,
+.ie7 section {
+	width: 960px;
+}
+.ie6 footer,
+.ie7 footer {
 	background-color: #f1f1f2;
 }
