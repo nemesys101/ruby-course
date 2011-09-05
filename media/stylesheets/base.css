@@ -261,6 +261,9 @@ body.about .authors li.last {
 	height: 3em;
 }
 
+body.about .volunteers {
+        visibility: hidden;
+}
 /* Media Queries ************************************************/
 @media screen and (min-width: 2000px) { 
 	.wrapper,
