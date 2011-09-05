@@ -262,7 +262,7 @@ body.about .authors li.last {
 }
 
 body.about .volunteers {
-        visibility: hidden;
+        display: none;
 }
 /* Media Queries ************************************************/
 @media screen and (min-width: 2000px) { 
