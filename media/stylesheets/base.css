@@ -10,7 +10,7 @@
 /* Global ************************************************/
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 100%;
   color: #333;
   line-height: 1.5em;
 }
@@ -125,9 +125,40 @@ a:hover {
 }
 
 /* tables */
-table {border-collapse: collapse; border-spacing: 0;}
-th {font-weight: bold}
-td {font-weight: normal}
+table {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: separate;
+  font-size: 0.9em;
+}
+table th, 
+table td {
+  padding: 0.7em;
+  line-height: 1em;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+table th {
+  padding-top: 1em;
+  font-weight: bold;
+  border-bottom-width: 2px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #666666;
+}
+table .even td {
+	background-color: #f8f8f8;
+}
+table .break td {
+	background-color: #ddffdd;
+	color: #439043;
+}
+table tr:hover td {
+  background-color: #ffffcc;
+}
+table colgroup.time {
+	width: 10em;
+}
 
 /* code */
 pre {
@@ -164,6 +195,7 @@ header nav li a {
 	padding: 0.5em 1em;
 	border-left: 1px solid #373737;
 }
+header nav li.active a,
 header nav a:hover {
 	background-color: #0c0c0c;
 }
@@ -300,6 +332,9 @@ body.about .volunteers li {
 	header nav li a {
 		border-left: 0;
 		padding-left: 0;
+	}
+	header nav li.active a {
+		background-color: inherit;
 	}
 	header nav li a:hover {
 		background-color: inherit;
