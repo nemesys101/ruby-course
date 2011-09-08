@@ -10,7 +10,7 @@
 /* Global ************************************************/
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 100%;
   color: #333;
   line-height: 1.5em;
 }
@@ -125,9 +125,40 @@ a:hover {
 }
 
 /* tables */
-table {border-collapse: collapse; border-spacing: 0;}
-th {font-weight: bold}
-td {font-weight: normal}
+table {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: separate;
+  font-size: 0.9em;
+}
+table th, 
+table td {
+  padding: 0.7em;
+  line-height: 1em;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+table th {
+  padding-top: 1em;
+  font-weight: bold;
+  border-bottom-width: 2px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #666666;
+}
+table .even td {
+	background-color: #f8f8f8;
+}
+table .break td {
+	background-color: #ddffdd;
+	color: #439043;
+}
+table tr:hover td {
+  background-color: #ffffcc;
+}
+table colgroup.time {
+	width: 10em;
+}
 
 /* code */
 pre {
@@ -164,6 +195,7 @@ header nav li a {
 	padding: 0.5em 1em;
 	border-left: 1px solid #373737;
 }
+header nav li.active a,
 header nav a:hover {
 	background-color: #0c0c0c;
 }
@@ -238,11 +270,17 @@ body.about img {
 	float: left;
 	margin-right: 1.5em;
 }
+body.about h2 {
+	margin-bottom: 0.2em;
+}
 body.about a:hover img {
 	border-color: #006CC9;
 }
-body.about h2 {
-	margin-bottom: 0.5em;
+body.about a:hover h2 {
+	text-decoration: underline;
+}
+body.about a p {
+	color: #12426a;
 }
 body.about .wrapper section {
 	width: 49%;
@@ -252,18 +290,17 @@ body.about .authors {
 	margin-right: 2%;
 }
 body.about .authors li {
+	height: 112px;
 	clear: both;
 	margin-bottom: 1.5em;
-	height: 112px;
 }
-body.about .authors li.last {
-	margin-bottom: 0;
-	height: 3em;
+body.about .authors li a {
+	outline: 0;
+}
+body.about .volunteers li {
+	margin-bottom: 0.5em;
 }
 
-body.about .volunteers {
-        display: none;
-}
 /* Media Queries ************************************************/
 @media screen and (min-width: 2000px) { 
 	.wrapper,
@@ -296,6 +333,9 @@ body.about .volunteers {
 		border-left: 0;
 		padding-left: 0;
 	}
+	header nav li.active a {
+		background-color: inherit;
+	}
 	header nav li a:hover {
 		background-color: inherit;
 		text-decoration: underline;
@@ -322,6 +362,13 @@ body.about .volunteers {
 }
 
 /* IE ************************************************/
-.footer {
+.ie6 .wrapper,
+.ie6 section,
+.ie7 .wrapper,
+.ie7 section {
+	width: 960px;
+}
+.ie6 footer,
+.ie7 footer {
 	background-color: #f1f1f2;
 }
