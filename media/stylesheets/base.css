@@ -264,17 +264,8 @@ body.home .date-and-place p {
 }
 
 /* About */
-body.about img {
-	padding: 3px;
-	border: 3px solid #d0d2d3;
-	float: left;
-	margin-right: 1.5em;
-}
 body.about h2 {
 	margin-bottom: 0.2em;
-}
-body.about a:hover img {
-	border-color: #006CC9;
 }
 body.about a:hover h2 {
 	text-decoration: underline;
@@ -290,15 +281,37 @@ body.about .authors {
 	margin-right: 2%;
 }
 body.about .authors li {
-	height: 112px;
 	clear: both;
+	overflow: auto;
 	margin-bottom: 1.5em;
+}
+body.about .authors li.last {
+	margin-bottom: 0;
 }
 body.about .authors li a {
 	outline: 0;
 }
+body.about .authors img {
+	padding: 3px;
+	border: 3px solid #d0d2d3;
+	float: left;
+	margin-right: 1.5em;
+}
+body.about .authors a:hover img {
+	border-color: #006CC9;
+}
+body.about .support li {
+	display: inline-block;
+	margin-right: 2em;
+}
+body.about .volunteers {
+	clear: both;
+	padding-bottom: 3em;
+}
 body.about .volunteers li {
-	margin-bottom: 0.5em;
+	margin-bottom: 1.5em;
+	width: 49%;
+	display: inline-block;
 }
 
 /* Media Queries ************************************************/
@@ -358,6 +371,10 @@ body.about .volunteers li {
 	}
 	body.about .authors {
 		margin-right: 0;
+	}
+	body.about .volunteers li {
+		margin-bottom: 1.5em;
+		width: 100%;
 	}
 }
 
