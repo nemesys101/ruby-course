@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start off with some headers
 
-Title: Ruby/Rails Workshop
-Author: Stumptown Syndicate and friends
+Title: Taller de Ruby/Rails 
+Author: DevChix y amigos
 Generator: text
 
 %css
@@ -25,53 +25,30 @@ table td {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start Presentation
 
-h1. Learning Ruby and Rails
+h1. Aprendiendo Ruby and Rails
 
-Good morning!
+Buenos días!
 
-h1. Outline of the Day
+h1. Agenda Del Día
 
 * 9:00 *Presentaciones*
 * 9:30- 13:00 *Instalación del ambiente de trabajo*
-* 10:30-11:30 *Introduction to Ruby*
-* 11:30-Noon *Ruby Koans*
-* Noon-1:00 *Lunch*
-* 2:45-3:00 *Break*
-* 3:00-4:30 *Rails part 2*
-* 4:30 *What Next?*
+* 10:30-11:30 *Introducción a Ruby*
+* 11:30-12:00 *Ruby Koans*
+* 12:00-1:00 *Almuerzo*
+* 2:45-3:00 *Descanso*
+* 3:00-4:30 *Rails parte 2*
+* 4:30 *Y ahora?*
 
-h1. What We'll Cover
+h1. Que Vamos A Cubrir
 
-* Basic concepts of programming
-* Syntax and simple operations of Ruby
-** Objects, classes, and methods
-* An introduction to Rails
-** How to use Rails machinery to manipulate application data
-** Data validation in Rails
-** Displaying data in Rails
-** Using scaffolding to start a simple application
-
-h1. What Is Programming?
-
-* Programming is the act of writing programs
-* A program is a precise, text-based, description of how to perform a *computation* on *data*
-* Data
-** Numbers
-** Strings: pieces of text
-** Lists of things
-** Booleans: true and false
-* Computations
-** Add 3 and 4
-** Find the largest number in a list of numbers
-** Contact Trimet's network and find the most convenient bus route
-
-h1. What Is a Programming Language?
-
-* A human readable format for describing computations
-* Any language can describe the same computations
-* Different languages are really just a different vocabulary
-% * Compilers or interpreters convert human-readable text to machine-readable %
-% * Different vocabularies offer different ways of expressing an idea: like human languages, each programming language makes some things easy to "say" and some things harder %
+* Syntaxis y operaciones simples de Ruby
+** Objectos, clases y metodos
+* Una introducción a Rails
+** Como usar la maquinaria de Rails para manipular datos de la aplicación
+** Validación de Datos en Rails
+** Mostrando datos en Rails
+** Usando scaffolding para empezar una simple aplicación
 
 h1. Why Ruby?
 
