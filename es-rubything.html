@@ -928,65 +928,70 @@
 </div>
 
 <div class='slide '>
-  <h1>Y que tal la C en MVC?</h1><p>Ahora que hemos visto y editado modelos y vistas, vamos a ir a mirar los archivos de controladores en el proyecto.</p>
+  <h1>Y sobre la C en MVC?</h1><p>Ahora que hemos mirado y editado modelos y vistas, vamos a ir a mirar los archivos de controladores en el proyecto.</p>
   <p>Qué hace un controlador?</p>
   <ul>
-    <li>Connecta la vista y el modelo, llamando metodos en los modelos para obtener los datos que se necesitan en las vistas, y permitiendote acceder a los parametros de entrada, como los de un formulario.</li>
-    <li>Responde al HTTP request de un navegador, y rendea el tipo pedido de salida (en nuestros scaffolds, esto es html oxml, pero otros como json pueden ser facilmente agregados, API instantanea!)</li>
+    <li>Conecta la vista y el modelo, llamando metodos en los modelos para obtener los datos que se necesitan en las vistas, y permitiendote acceder a los parametros de entrada, como los de un formulario.</li>
+    <li>Responde al HTTP request de un navegador, y renderea el tipo pedido de salida (en nuestros scaffolds, esto es html o xml, pero otros como json pueden ser facilmente agregados, API instantanea!)</li>
     <li>El controlador es también donde tu deberias agregar control de acceso, como por ejemplo solo permitir que el usuario que escribio el rant pueda eliminarlo.</li>
   </ul>
 </div>
 
 <div class='slide '>
-<h1>Making Your Own</h1><ul>
-	<li>Exit <code>microrant</code> directory</li>
-	<li>Run <code>rails new betterrant</code></li>
-	<li>Enter the betterrant directory and run:</li>
-</ul>
-<pre><code>bundle install
-rails generate scaffold User name:string
-rails generate scaffold Rant user_id:integer message:string
-rake db:migrate</code></pre>
-<p>At this point you can start the server and take a look around.</p>
-
+  <h1>Picando tu propio código</h1>
+  <ul>
+	<li>Ir al directorio donde queres crear la aplicacion de rails.</li>
+	<li>Ejecutar <code>rails new betterrant</code> para crear la aplicación betterrant.</li>
+	<li>Ir al directorio betterrant y ejecutar:</li>
+  </ul>
+  <pre><code>bundle install
+  rails generate scaffold User name:string
+  rails generate scaffold Rant user_id:integer message:string
+  rake db:migrate</code></pre>
+  <p>Ahora podes comenzar el servidor y mirar que paso.</p>
 </div>
-<div class='slide '>
-<h1>Summary</h1><ul>
-	<li>We&#8217;ve reviewed the basics of the Ruby language
-	<ul>
-		<li>For a refresher, <a href="http://tryruby.org/">Try Ruby</a> is a browser based overview of Ruby</li>
-		<li>Ruby has a number of simple types of data such as strings, numbers, arrays, and hashes</li>
-		<li>Most computations in Ruby are handled by methods.</li>
-		<li>A class is a template for creating objects that bundles data and methods</li>
-		<li>Classes can be extended as new needs arise</li>
-	</ul></li>
-</ul>
 
+<div class='slide '>
+  <h1>Resumen</h1>
+  <ul>
+    <li>Introducimos el lenguaje Ruby
+    <ul>
+	<li>Por un repaso, <a href="http://tryruby.org/">Try Ruby</a> es para practicar ruby en el navegador</li>
+	<li>Ruby tiene algunos tipos simples de datos como strings, números, arrays y hashes</li>
+        <li><!--Sobre metodos y clases-->.</li>
+	<li>Classes can be extended as new needs arise</li>
+    </ul>
+    </li>
+  </ul>
 </div>
+
 <div class='slide '>
-<h1>Summary</h1><ul>
-	<li>We&#8217;ve covered a small Rails application: microrants
-	<ul>
-		<li>A good next tutorial is <a href="http://railsforzombies.org/">Rails For Zombies</a></li>
-		<li>More detail can be found in the <a href="http://guides.rubyonrails.org/">Ruby Guides</a></li>
-		<li>ActiveRecord allows us to manipulate our persistent data like normal objects</li>
-		<li>.erb files allow us to intergrate Ruby code with html</li>
-		<li>Scaffolding gives a way of automating the start of a Rails project</li>
-	</ul></li>
+  <h1>Resumen</h1>
+  <ul>
+    <li>Hemos visto una pequeña aplicacion Rails: microrants
+    <ul>
+      <li>Un buen tutorial es <a href="http://railsforzombies.org/">Rails For Zombies</a></li>
+      <li>Más detalles en <a href="http://guides.rubyonrails.org/">Ruby Guides</a></li>
+      <li>ActiveRecord nos ayuda a manipular la base de datos como objetos comunes</li>
+      <li>Los archivos .erb nos ayuda a integrar código Ruby con HTML</li>
+      <li>Scaffolding  nos da una forma de automatizar el comienzo de un proyecto Rails</li>
+    </ul>
+    </li>
 </ul>
-
 </div>
-<div class='slide '>
-<h1>Next Steps</h1><ul>
-	<li>Try to make betterrant match or improve upon microrant</li>
-	<li>Get involved in the local Ruby <a href="http://pdxruby.org/">user group</a></li>
-	<li>Start coming to <a href="http://codeandsplode.org/">Code-n-Splode</a></li>
-</ul>
 
+<div class='slide '>
+  <h1>Próximos Pasos</h1>
+  <ul>
+    <li>Intenta agregaf funcionalidades a betterrant o mejorar microrant</li>
+    <li>Involucrate con el grupo de usuarios Ruby en formación</li>
+    <li>Contribuye con Rails</li>
+  </ul>
 </div>
-<div class='slide '>
-<h1>Stepping outside</h1></div>
 
+<div class='slide '>
+  <h1>Contribuyendo con Rails</h1>
+</div>
 
 </div><!-- presentation -->
 </body>
