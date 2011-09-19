@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start off with some headers
 
-Title: Ruby/Rails Workshop
-Author: Stumptown Syndicate and friends
+Title: Taller de Ruby/Rails
+Author: DevChix Uruguay y Amigos
 Generator: text
 
 %css
@@ -25,94 +25,140 @@ table td {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start Presentation
 
-h1. Learning Ruby and Rails
+h1. Aprendiendo Ruby and Rails
 
-Good morning!
+Buenos Días!
 
-h1. Outline of the Day
+h1. Presentaciones
+
+* Devchix : devchix@ y www.devchix.com
+* RailsBridge en la comunidad Ruby/Rails
+* PyStar en la comunidad Python
+* En Montevideo gente de Cubox, WyeWorks y Moove-it
+
+h1. Agenda del Día
 
 * 9:00 *Presentaciones*
-* 9:30- 13:00 *Instalación del ambiente de trabajo*
-* 10:30-11:30 *Introduction to Ruby*
-* 11:30-Noon *Ruby Koans*
-* Noon-1:00 *Lunch*
-* 2:45-3:00 *Break*
-* 3:00-4:30 *Rails part 2*
-* 4:30 *What Next?*
+* 9:30 - 13:00 *Instalación del ambiente de trabajo*
+* 10:30 -11:30 *Introduction to Ruby*
+* 11:30 -12:00 *Ruby Koans*
+* 12:00 -1:00 *Almuerzo*
+* 1:00 - *Rails parte 1*
+* 2:45 -3:00 *Descanso*
+* 3:00 -4:30 *Rails parte 2*
+* 4:30 *Y ahora? Contribuyendo con Rails*
 
-h1. What We'll Cover
+h1. Qué Temas Vamos a Cubrir?
 
-* Basic concepts of programming
-* Syntax and simple operations of Ruby
-** Objects, classes, and methods
-* An introduction to Rails
-** How to use Rails machinery to manipulate application data
-** Data validation in Rails
-** Displaying data in Rails
-** Using scaffolding to start a simple application
+* La historia de Ruby
+* Instalando el ambiente de trabajo
+* Sintaxis y operaciones simples en Ruby
+** Objectos, clases y metodos
+** Bloques y estructuras de control
+** Metaprogramming, tainting, reflection y marshaling // ver como colocar esta parte, solo una idea de que esto existe
+* Testing en Ruby
+* Una introducción a Rails
+** Cómo usar la maquinaria de Rails para manipular datos en la aplicación** Validación de datos en Rails
+** Mostrando datos en Rails
+** Usando scaffolding para comenzar una aplicación simple
 
-h1. What Is Programming?
+h1. La historia de Ruby
+* Yukihiro "Matz" Matsumoto es el creador de Ruby.
+* Contexto frente a otros lenguajes que puedan estar usando
+* Ruby es un lenguaje interpretado 
+* Ruby es un lenguaje orientado a objetos
+* Diferentes implementaciones del lenguaje (mri, jruby, rubinius, ree, etc)
 
-* Programming is the act of writing programs
-* A program is a precise, text-based, description of how to perform a *computation* on *data*
-* Data
-** Numbers
-** Strings: pieces of text
-** Lists of things
-** Booleans: true and false
-* Computations
-** Add 3 and 4
-** Find the largest number in a list of numbers
-** Contact Trimet's network and find the most convenient bus route
+h1. Porque Ruby?
 
-h1. What Is a Programming Language?
+* Fácil de aprender
+* La comunidad de Ruby en Montevideo está creciendo
+* La comunidad tiene un sistema de documentación standard (RDoc)
+* Tiene RubyGems que es el sistema usado para empaquetar y distribuir código Ruby
+* Rails es un web framework bastante popular construido sobre Ruby
+* En 10 años se han agregado una gran cantidad de clases y modulos nativos al lenguaje.
+* Tiene buenas herramientas para testing como RSpec y Cucumber.
+* Para este taller usaremos Ruby 1.9 pues se ha expandido mucho en comparación con la versión 1.8.7
 
-* A human readable format for describing computations
-* Any language can describe the same computations
-* Different languages are really just a different vocabulary
-% * Compilers or interpreters convert human-readable text to machine-readable %
-% * Different vocabularies offer different ways of expressing an idea: like human languages, each programming language makes some things easy to "say" and some things harder %
+h1. Instalando el ambiente de trabajo
 
-h1. Why Ruby?
+* Todos se sienten comodos manejando una terminal?
+* En linux ó Mac (tener el sistema actualizado e instalado curl y git)
+** RVM: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
+*** @bash < <( curl http://rvm.beginrescueend.com/releasesl/rvm-install-head )@
+*** Seguir las instrucciones para agregar rvm al .bashrc
+*** @source $HOME/.rvm/scripts/rvm@
+*** @rvm notes@
+* En Windows hay que instalar primero Ruby
+** Ruby: Vamos a usar la version 1.9.2 y el interprete MRI
+*** Ir a http://rubyinstaller.org y descargar la versión de Ruby mediante el botón Download. 
+*** Ejecutarla y comenzar la intalación
 
-* It's easy to learn
-* Portland has a strong Ruby community
-* Rails is a popular web framework built on Ruby
-* Rails gives Ruby a good, simple, vocabulary for web development
+h1. Instalando el ambiente de trabajo
 
-h1. Starting Ruby
+* En Linux ó Mac
+** Ruby: para este taller usaremos mri y la versión 1.9.2
+*** @rvm install 1.9.2@
+*** mirar rvm help para ver que más se puede hacer
+* En Windows
+** PIK: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
+*** Descargar la última versión http://github.com/vertiginous/pik/downloads
+*** Seguir los pasos de la instalación
+*** Deslogueate o reinicia windows para integrar pik al ambiente.
+*** En una terminal
+**** @pik add@
+**** @pik list@
+**** @pik use 192@
+**** @ruby -v@
 
-Open a terminal window. Type "irb" and hit enter.
+h1. Instalando el ambiente de trabajo
 
-% TODO say something about irb is an interpreter
+* Rails: Vamos a usar la version 3.XX
+** En Linux
+** En Windows
+** En Mac
 
-Try entering a few things: 
+* Editores
+** VIM y plugins para ruby/rails
+** Textmate
+** Emacs
+** Gedit
+** Eclipse?
+** NetBeans
+
+h1.  Abriendo el interprete de Ruby
+
+%TODO Ver donde nombrar ri para la documentación...
+
+Abrir una terminal y ejecutar irb. También existe pry y pueden bajarlo desde XXX. %TODO Nombrar algunas diferencias.
+
+Jugar un poco:
 
 bc. 1
 4 + 3 
 "hat" 
 [1, 2, 3, "happy"].each { |i| puts i }
 
-@>>@ is your prompt to enter text and @=>@ will appear at the start of each response.
+@>>@ es donde ingresas comandos y en @=>@ va a aparecer la respuesta.
 
-Use the up and down arrow keys to navigate back and forth through the previous commands you've entered.
+irb tiene un historial de comandos. Usen las flechitas para navegarlo.
 
-h1. Basic Ruby Data
+h1. Datos Básicos de Ruby
 
-% TODO more tabley
+% TODO more table
 
-|Numbers | @1@, @2@, @3@ |
+|Integers| @1@, @2@, @3@ |
 |Strings | @"chicken"@ |
 |Booleans| @true@, @false@ |
 |Symbols | @:chicken@ |
 |Arrays  | @[1, 7, "cake"]@ |
 |Hashes  | @{:chicken => "chicken", :sillyexample => :chicken}@ |
 
-Type these at the command line! What happens?
+En Ruby TODO es un objeto. El tipo del objeto es definido por lo que el objeto puede hacer. A esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
 
-That's the data, where are the computations?
+Juega con la terminal!
 
-h1. Basic Ruby Computations
+h1. Operaciones Basicas en Ruby
 
 | @2 + 2@ | |
 | @3 * 3@ | |
@@ -122,7 +168,7 @@ h1. Basic Ruby Computations
 | @2 + 2 == 5@ | |
 | @[1 , 2, 3].include?(2)@ | | |
 
-h1. Basic Ruby Computations
+h1. Operaciones Basicas en Ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | |
@@ -132,7 +178,7 @@ h1. Basic Ruby Computations
 | @2 + 2 == 5@ | |
 | @[1 , 2, 3].include?(2)@ | | |
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -142,7 +188,7 @@ h1. Basic Ruby Computations
 | @2 + 2 == 5@ | |
 | @[1 , 2, 3].include?(2)@ | | |
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -153,7 +199,7 @@ h1. Basic Ruby Computations
 | @[1 , 2, 3].include?(2)@ | | |
 
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -164,7 +210,7 @@ h1. Basic Ruby Computations
 | @[1 , 2, 3].include?(2)@ | | |
 
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -175,7 +221,7 @@ h1. Basic Ruby Computations
 | @[1, 2, 3].include?(2)@ | | |
 
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -185,7 +231,7 @@ h1. Basic Ruby Computations
 | @2 + 2 == 5@ | @false@ |
 | @[1, 2, 3].include?(2)@ | |  |
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -195,23 +241,12 @@ h1. Basic Ruby Computations
 | @2 + 2 == 5@ | @false@ |
 | @[1, 2, 3].include?(2)@ | | @true@ |
 
-What do you think @"chicken".reverse.length@ does?
-What about @"puppy".include?("p")@?
-
-h1. That's Nice But...
-
-* How do we combine steps or use the result of an action?
-* Variables name particular values
-* The same variable can be set to different values at different times
-
-bc. var1 = 4
-var1
-var2 = "chicken"
-var2
-var2 = var1
-var2
+Y que es lo que hace @"chicken".reverse.length@ ?
+Y @"puppy".include?("p")@?
 
 h1. Interlude: String Interpolation
+
+%TODO Decidir si sacar este slide o no
 
 Something you might want to do is print out a string that has a value
 contained within it.
@@ -229,7 +264,7 @@ Now back to variables!
 
 h1. Variables
 
-Try typing the following, noting what happens at each step 
+Qué pasa en cada paso?
 
 bc. thing = "chicken"
 thing
@@ -239,27 +274,23 @@ thing = thing.reverse
 
 h1. Variables
 
-* @thing.reverse@ didn't permanently reverse the string!
-* We had to *set* the value with another assignment statement
-* Some functions do change state
-
-Try 
+Intenten.
 
 bc. awesomelist = [5,2,1,8]
 awesomelist.sort!
 awesomelist
 
-How did that happen? Actions that end with a @!@ *change* the data!
-This is a Ruby convention, but a good one to follow.
+Como paso esto? Acciones que terminen con un @!@ "cambian" los datos!
+Esto es una convención de Ruby, pero una buena a seguir.
 
 h1. Hashes
 
-Let's consider a book rating system: 
-* We use numeric values 0-5 to represent a book that you've read
-* :not_rated will represent a book that you haven't rated
-* We'll store all this data in a hash
+Consideremos un sistema de rating de libros:
+* Usamos valores numericos 0-5 para valorar un libro que hemos leido.
+* 0 va a representar un libro que aún no ha sido rated
+* Vamos a guardar los datos en un hash.
 
-Fill in a hash with some books, e.g.
+Crea un hash y agregale algunos libros, por ejemplo:
 
 bc. books = { "Left Hand of Darkness"        => 5,
           "The Word for World Is Forest" => 5,
@@ -268,76 +299,50 @@ bc. books = { "Left Hand of Darkness"        => 5,
 
 h1. Hashes
 
-We can retrieve the rating for a particular book like so
+Podemos obtener el rating de un libro en particular con
 
 @books["Left Hand of Darkness"]@
 
-We can also *set* values like so
+También podemos *setear* valores con
 
 @books["Only Revolutions"] = 3@
 
-How can we add a rating for a new book? Any guesses?
-
-
-h1. Hashes
-
-We can retrieve the rating for a particular book like so
-
-@books["Left Hand of Darkness"]@
-
-We can also *set* values like so
-
-@books["Only Revolutions"] = 3@
-
-How can we add a rating for a new book? Any guesses?
-
-We set the value of the book just like before!
+Agregamos un libro de la misma forma
 
 @books["White Teeth"] = 4@
 
-Now type @books@ to see the whole hash.
+Y con @books@ vemos todo el hash
 
-% TODO what is a method
+Jueguen con el hash en irb
 
-h1. Let's Try Something
-
-@40.reverse@
-
-What happens?
-
-h1. Let's Try Something
+h1. Probemos
 
 @40.reverse@
 
-What happens?
+Qué pasa?
 
-Ruby just reported @NoMethodError: undefined method `reverse' for 40:Fixnum@
+Ruby dijo @NoMethodError: undefined method `reverse' for 40:Fixnum@
 
-That means that @reverse@ is not something you can do to the number 40.
+Significa que @reverse@ no es un metodo que puedamos aplicar al número 40.
+h1. Metodos
 
-h1. Methods
+Los metodos son invocados al enviarles un mensaje al objeto. El mensaje contiene el nombre del metodo asi como cualquier parametro que este necesite.
 
-Most computations in Ruby are performed by *methods*.
-Type @40.methods@ to see which methods are available for basic numbers.
+Si quieren ver los metodos de un objeto pueden escribir @40.methods.sort@
 
-Notice @+@, @-@, et al. in the list? 
+Jueguen con el hash en la consola de ruby.
 
-What about @"chicken".methods@ ?
+h1. Objetos
 
-h1. Objects
+Nuevamente, todo lo que manipulas en Ruby es un objeto y los resultados de esas manipulaciones tambien son objetos. Y cada objeto tiene un identificador único.
 
-% TODO better term for piece
+Un objeto son los datos asi como tambien los metodos que se le puede aplicar.
 
-An object is data along with the methods, computations, that
-can operate on it.
-
-Everything in Ruby is an object: numbers, strings, hashes, etc.
-
-How do you know what kind of object something is? Ask!
+Como sabemos de qu tipo es un objeto? Sólo hay qu prguntarle!
 
 @40.class@
 
-What *is* a class?
+Qué *es* una Clase?
 
 h1. Classes
 
@@ -840,10 +845,35 @@ h1. Summary
 h1. Next Steps
 
 * Try to make betterrant match or improve upon microrant
-* Get involved in the local Ruby "user group":http://pdxruby.org/
-* Start coming to "Code-n-Splode":http://codeandsplode.org/
+* Participa en el grupo de Ruby de Uruguay
+* Otros recursos:
+** PickAxe es un clásico entre los libros para aprender Ruby. Pueden encontrarlo en <a href="http://pragprog.com">http://pragprog.com</a>
+** Web RubyLang para ver lo último de Ruby: <a href="http://www.ruby-lang.org">http://www.ruby-lang.org</a>
+** La documentación de Ruby <a href="http://www.ruby-doc.org">http://www.ruby-doc.org</a>
+** Mailing Lists 
+*** ruby-sur@ ?
+*** ruby-uruguay@ ?
+*** ruby-talk@ruby-lang.org (en ingles)
+*** ruby-doc@ruby-lang.org (en ingles) sobre documentación
+*** ruby-core@ruby-lang.org (en ingles) sobre implemantación del core de ruby
+*** ruby-dev@ruby-lang.org (en ingles) para desarrolladores de ruby
+*** muchos más en mailing lists en www.ruby-lang.org y archivo en www.ruby-talk.org
+** User Groups
+** IRC
+** RubyConf Uruguay 2011 el próximo fin de semana.
 
 % TODO what else should go here? mention some materials in the take-home packet?
 
-h1. Stepping outside
+h1. Contribuir con Ruby y con Rails
 
+* Reportar Bugs en Ruby
+** El tracking system está en http://redmine.ruby-lang.org
+** Antes de reportarlo navega los bugs ya reportados para ver si tu bug ya existe. También proba nuevas versiones de ruby por si eso lo soluciona.
+** También es una buena idea enviar una pregunta sobre el bug a la lista de correo ruby-talk.
+** Cuando envias un bug es una buena idea incluir el resultado de ejecutar ruby -v, el sistema operativo y además la problematica del código.
+* Ayudar con la documentación
+** Hacer traducción
+** Mejorar la documentación
+** Hay un sistema llamado RDoc
+** ri es un visor en la consola para esa misma documentación
+*** Tipea ri ClassName para encontrar la documentación de esa clase
