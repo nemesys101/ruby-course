@@ -50,7 +50,7 @@ h1. Agenda del Día
 
 h1. Qué Temas Vamos a Cubrir?
 
-* La historia de Ruby
+* Ruby
 * Instalando el ambiente de trabajo
 * Sintaxis y operaciones simples en Ruby
 ** Objectos, clases y metodos
@@ -62,23 +62,25 @@ h1. Qué Temas Vamos a Cubrir?
 ** Mostrando datos en Rails
 ** Usando scaffolding para comenzar una aplicación simple
 
-h1. La historia de Ruby
-* Yukihiro "Matz" Matsumoto es el creador de Ruby.
-* Contexto frente a otros lenguajes que puedan estar usando
-* Ruby es un lenguaje interpretado 
-* Ruby es un lenguaje orientado a objetos
-* Diferentes implementaciones del lenguaje (mri, jruby, rubinius, ree, etc)
+h1. Ruby
+
+* Originado en Japon a mediados de los 90, su creador es Yukihiro "Matz" Matsumoto. Está inspirado en Perl, Lisp entre otros lenaguajes
+* Ruby es un lenguaje dinamico, reflexivo, orientado a objetos 
+* Hay diferentes implementaciones del lenguaje
+** MRI (mat'z ruby interpreter) es la referencia que hay de Ruby. Está escrito en C
+** JRuby es una implementación hecha en Java
+** IronRuby corre sobre .NET. Es desarrollado por Microsoft bajo la Apache License.
+** Rubinius es hecha en Ruby
+** Otros
 
 h1. Porque Ruby?
 
 * Fácil de aprender
 * La comunidad de Ruby en Montevideo está creciendo
-* La comunidad tiene un sistema de documentación standard (RDoc)
 * Tiene RubyGems que es el sistema usado para empaquetar y distribuir código Ruby
 * Rails es un web framework bastante popular construido sobre Ruby
 * En 10 años se han agregado una gran cantidad de clases y modulos nativos al lenguaje.
 * Tiene buenas herramientas para testing como RSpec y Cucumber.
-* Para este taller usaremos Ruby 1.9 pues se ha expandido mucho en comparación con la versión 1.8.7
 
 h1. Instalando el ambiente de trabajo
 
@@ -118,19 +120,19 @@ h1. Instalando el ambiente de trabajo
 ** En Windows
 ** En Mac
 
-* Editores
-** VIM y plugins para ruby/rails
+* Editores: Trabajen en el que se sientan más comodos
+** VIM
 ** Textmate
 ** Emacs
 ** Gedit
-** Eclipse?
+** Eclipse
 ** NetBeans
 
 h1.  Abriendo el interprete de Ruby
 
-%TODO Ver donde nombrar ri para la documentación...
+Abrir una terminal y ejecutar irb. 
 
-Abrir una terminal y ejecutar irb. También existe pry y pueden bajarlo desde XXX. %TODO Nombrar algunas diferencias.
+Desde hace poco también existe pry y pueden bajarlo desde XX (diferencia???
 
 Jugar un poco:
 
@@ -157,6 +159,18 @@ h1. Datos Básicos de Ruby
 En Ruby TODO es un objeto. El tipo del objeto es definido por lo que el objeto puede hacer. A esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
 
 Juega con la terminal!
+
+h1. Datos Básicos en Ruby
+
+* En Java @min = Math.abs(num)@
+* En Ruby @postive = num.abs@ 
+
+* En C @strlen(name)@
+* En Ruby @name.lenght@
+
+Le enviamos un mensaje al propio objeto. Y lo mismo aplica a toods los objetos en Ruby.
+
+En Ruby, NIL es un objeto que representa nada.
 
 h1. Operaciones Basicas en Ruby
 
@@ -239,28 +253,23 @@ h1. Operaciones basicas en ruby
 | @"chicken".length@  | @7@ |
 | @2 + 2 == 4@ | @true@ |
 | @2 + 2 == 5@ | @false@ |
-| @[1, 2, 3].include?(2)@ | | @true@ |
+| @[1, 2, 3].include?(2)@ | @true@ |
 
 Y que es lo que hace @"chicken".reverse.length@ ?
 Y @"puppy".include?("p")@?
 
-h1. Interlude: String Interpolation
+h1. Interpolatción de Expresiones
 
-%TODO Decidir si sacar este slide o no
+Algo que Ruby hace con strings entre comillas dobles es interpolacion de expresiones. Es decir, dentro de un string la secuencia #{expression} es reemplazada por el valor de la expresión.
 
-Something you might want to do is print out a string that has a value
-contained within it.
+Por ejemplo, prueba
 
-For example, try typing
+@"Nuestro array es #{[1,2,3]}"@
 
-@"Our array is #{[1,2,3]}"@
-
-Most useful when dealing with variables!
+Ó
 
 bc. var = [1,2,3,4,5,6]
-"Our array is #{var}"
-
-Now back to variables!
+"Nuestro array es #{var}"
 
 h1. Variables
 
@@ -283,33 +292,71 @@ awesomelist
 Como paso esto? Acciones que terminen con un @!@ "cambian" los datos!
 Esto es una convención de Ruby, pero una buena a seguir.
 
+h1. Convenciones para Variables
+
+* locales:  comienzan con minuscula o guion bajo
+* globales: comienzan con $
+* de instancia: comienzan con @
+* de clase: comienzan con @@
+* de más de una palabra se escriben con guion bajo. Ej. user_name
+
+h1. Simbolos
+
+Son nombres de constantes que no hay que pre-declarar y que son únicas. Empieza con @:@ y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el simbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.
+
+Por ejemplo:
+
+* @:norte@
+* @:sur@
+
+h1. Hashes
+
+* Al igual que los arrays son colecciones indexadas.
+* Las llaves de los arrays deben ser integer pero los hashes pueden tener cualquier objeto como llave.
+* Pueden contener diferentes tipos de elemento en el mismo array/hash.
+* Por defecto el valor para nil en un hash es false. Se puede cambiar al crear el hash.
+* En Ruby 1.9 se introduce un nuevo sintaxis para hashes
+
+bc. frutas_color = {
+		naranja:  "naranja",
+		frutilla: "rojo",
+		banana:   "amarillo
+	}
+
+@frutas_color[:frutilla]@ 
+
+produce 
+
+"rojo"
+
 h1. Hashes
 
 Consideremos un sistema de rating de libros:
 * Usamos valores numericos 0-5 para valorar un libro que hemos leido.
-* 0 va a representar un libro que aún no ha sido rated
+* :not_rated va a representar un libro que aún no ha sido rated
 * Vamos a guardar los datos en un hash.
 
 Crea un hash y agregale algunos libros, por ejemplo:
 
 bc. books = { "Left Hand of Darkness"        => 5,
-          "The Word for World Is Forest" => 5,
-          "Nevermind the Pollacks"       => 0,
-          "Only Revolutions"             => :not_rated }
+              "The Word for World Is Forest" => 5,
+              "Nevermind the Pollacks"       => 0,
+              "Only Revolutions"             => :not_rated 
+	    }
 
 h1. Hashes
 
-Podemos obtener el rating de un libro en particular con
+Vamos a obtener el rating de un libro en particular con
 
-@books["Left Hand of Darkness"]@
+	@books["Left Hand of Darkness"]@
 
 También podemos *setear* valores con
 
-@books["Only Revolutions"] = 3@
+	@books["Only Revolutions"] = 3@
 
 Agregamos un libro de la misma forma
 
-@books["White Teeth"] = 4@
+	@books["White Teeth"] = 4@
 
 Y con @books@ vemos todo el hash
 
@@ -323,72 +370,58 @@ Qué pasa?
 
 Ruby dijo @NoMethodError: undefined method `reverse' for 40:Fixnum@
 
-Significa que @reverse@ no es un metodo que puedamos aplicar al número 40.
+Significa que @reverse@ no es un metodo que podamos aplicar al número 40
+
 h1. Metodos
 
 Los metodos son invocados al enviarles un mensaje al objeto. El mensaje contiene el nombre del metodo asi como cualquier parametro que este necesite.
 
 Si quieren ver los metodos de un objeto pueden escribir @40.methods.sort@
 
-Jueguen con el hash en la consola de ruby.
 
 h1. Objetos
 
-Nuevamente, todo lo que manipulas en Ruby es un objeto y los resultados de esas manipulaciones tambien son objetos. Y cada objeto tiene un identificador único.
+Nuevamente, todo lo que manipulas en Ruby es un objeto y los resultados de esas manipulaciones tambien son objetos. Cada objeto tiene un identificador único.
 
 Un objeto son los datos asi como tambien los metodos que se le puede aplicar.
 
-Como sabemos de qu tipo es un objeto? Sólo hay qu prguntarle!
+Como sabemos de qu tipo es un objeto? Sólo hay que preguntarle!
 
 @40.class@
 
-Qué *es* una Clase?
+h1. Clases & Metodos
 
-h1. Classes
-
-% TODO wording of templates, descriptions
-
-* Classes are templates for making objects
-* Classes create different types of objects
-** All numbers can be added
-** All strings can be reversed
-* They define kinds of data and methods on that data
-
-
-h1. Classes & Methods
-
-Let's learn the syntax by example:
+Aprendamos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
 end
 
-p. What can we do with @Counter@?
+p. Qué podemos hacer con @Counter@?
 
 @c = Counter.new@
 
 % Step 1 %
 
-h1. Classes & Methods
+h1. Clases & Metodos
 
-Let's learn the syntax by example:
+Aprendemos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
 attr_accessor :value
-
 end
 
-p. Now try
+p. Ahora intentemos
 
 bc. c = Counter.new
 c.value
 c.value = 10
 c.value
 
-What happened? What does @attr_accessor :value@ do?
+Qué pasa? Que es lo que hace @attr_accessor :value@ ?
 
-h1. Classes & Methods
+h1. Clases & Metodos
 
-Let's learn the syntax by example:
+Aprendemos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
   attr_accessor :value
@@ -399,18 +432,18 @@ bc.. class Counter
 
 end
 
-p. Now, again, try
+p. Nuevamente
 
 bc. c = Counter.new
 c.value
 
-@initialize@ gives @new@ instructions on how to create an object
+@initialize@ le da instrucciones a @new@ de como crear un objeto
 
 % Step 2 %
 
-h1. Classes & Methods
+h1. Clases & Metodos
 
-Let's learn the syntax by example:
+Aprendamos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
   attr_accessor :value
@@ -429,7 +462,7 @@ end
 
 h1. Classes
 
-Let's use our Counter class:
+Usemos nuestra clase Counter:
 
 bc. count = Counter.new
 count.increment
@@ -437,17 +470,14 @@ count.increment
 count.value
 
 bc. count.class
-count.methods
+count.methods.sort
+count.responde_to?(:increment)
 
-% change to use respond_to? , have a note about what respond_to? does in speech
+h1. Ejercicio
 
-Try @count.respond_to?("increment")@. What did you see?
+Vamos a agregar un metodo @Counter.increment_by@ que tome un *argumento* por el cual incrementar el contador.
 
-h1. Class Exercise
-
-Let's add a @Counter.increment_by@ method that takes an *argument* for how much to increment.
-
-Don't need to start all over - we *open* the class instead
+No hay que empezar desde cero; podemos sólo *abrir* la clase
 
 bc.. class Counter
 
@@ -457,7 +487,7 @@ end
 
 end
 
-p. Test your code as follows:
+p. Prueba el código que escribiste:
 
 bc. c = Counter.new
 c.increment_by(5)
@@ -465,7 +495,7 @@ c.value
 
 h1. Classes
 
-You can add methods to existing classes as well:
+También se puede agregar metodos a clases ya existentes:
 
 bc. class String
   def chicken?
@@ -476,66 +506,109 @@ end
 bc. "chicken".chicken?
 "puppy".chicken?
 
-@self@ is a way of referring to the object that the method is being called on.
+@self@ es una forma de referirse al objeto del cual el metodo se esta llamando.
 
-In @"puppy".chicken?@, @self@ is @"puppy"@.
+En @"puppy".chicken?@, @self@ es @"puppy"@.
 
-h1. Classes Exercise
 
-Add a method to String that will test to see if a string is a palindrome.
+h1. Clases
 
-A palindrome is any string that is the same read forwards or backwards.
+Si aún no lo han hecho, escriban la clase Counter en su editor favorito y guardenlo en disco. Levantemoslo en la consola de ruby.
 
-To get you started type the following at the command line:
+bc. class Counter
+  attr_accessor :value</code>
+  def initialize
+    @value = 0
+  end
+  def increment
+    @value = @value + 1
+  end
+  def increment_by(n)
+    @value = @value + n
+  end
+
+En la consola: @require 'path_to_your_file'@
+
+h1. Testing
+
+Automatizar cualquier tarea que se pueda hacer más de una vez es una sabia decisión.
+
+* no tener que pasar horas buscando un bug en el código que se escribio hace meses
+* escribir codigo mas robusto y de mejor calidad
+* el código se hace más mantenible
+* más productividad a largo plazo sobre la aplicación
+
+h1. Testing
+
+Ahora escribiremos una clase para testearlo automaticamente.
+
+bc. require 'test/unit'
+  require 'counter'
+  class TestCounter < Test::Unit::TestCase
+    def test_increment
+      assert_equal(1, Counter.new().increment())
+    end
+  end
+
+Escribanlo en un archivo test_counter.rb y ejecutenlo.
+
+h1. Ejercicio
+
+Escribir un test para increment_by.
+
+h1. Ejercicio
+
+Agregar un metodo a String que devuelva si un string es palindromo o no.
+
+Un palindromo es cualquier cadena de caracteres que se lea igual de adelante para atras que de atras para adelante.
+
+Para empezar tipear lo siguiente en la linea de comandos:
 
 bc. class String
   def palindrome?
 
-and finish the rest! Test it on @"abba".palindrome?@ and @"puppy".palindrome?@
+y terminarlo! Pruebenlo con @"abba".palindrome?@ y @"puppy".palindrome?@
 
-h1. Learn more about common Ruby classes
+h1. Más sobre las clases build-in Ruby
 
 "http://rubydoc.info/stdlib/core/":http://rubydoc.info/stdlib/core
 
-Good places to start: Array, Enumerable, Fixnum, Float, Hash, NilClass, String, Time
+Otras son: Array, Enumerable, Fixnum, Float, Hash, NilClass, String, Time
 
-h1. Blocks
+h1. Bloques
 
-% introduce blocks by example first then explain what
-% they are - have other examples of block usage first, sort_by and map as
-% well as just each
-% pull up array documentation or something like that in terms of showing
-% OH HAI some methods take blocks
+Algunos metodos también pueden tener asociados bloques como si fueran parametros.
 
-Some methods take blocks.
-
-@list.each {|p| code}@ runs @code@ on every element of @list@
+@list.each {|p| code}@ corre @code@ en cada elemento de @list@
 
 bc. list = [1,2,3,4]
 list.each { |n| puts (n + 1) }
 
-* A *block* is a computation, but *not* a method
-* A block is of the form @{ |arg1, arg2, ..| code }@
-* @{ |v| v.palindrome? }@
-* @{ |x, y| x * y }@
+* Un *bloque* es un pedazo de código
+* Puede tener dos sintaxis
+** Cuando es sólo una linea @{ |arg1, arg2, ..| code }@
+** @{ |v| v.palindrome? }@
+** @{ |x, y| x * y }@
+** Cuando es más de una linea 
+bc. do |arg|
+    code
+  end
 
-h1. Blocks
+h1. Bloques
 
-% TODO different block iterator than the previous things, something more complicated
-
-A more complicated example of using each:
+Para nuestro ejemplo de los libros.
 
 bc. reviews = Hash.new(0)
 books.values.each { |rate| reviews[rate] = reviews[rate] + 1 }
 reviews
 
-@reviews@ is a count of how many reviews you gave with a particular rating
+Qué contiene @reviews@?
 
 @reviews[5]@
 
-h1. Blocks
+h1. Bloques
 
-There's another way to write blocks. This is commonly used for multi-line expressions.
+Y en caso que el bloque tenga más de una linea
 
 bc. reviews = Hash.new(0)
 books.values.each do |rate|
@@ -543,11 +616,41 @@ books.values.each do |rate|
   # more code can go here...
 end
 
-h1. Control Structures
+h1. Bloques y Callbacks
 
-Ruby provides control structures for writing more complicated code.
+Se pueden usar bloques para implementar callbacks, para pasar pedazos de código e implementar iteradores.
 
-If statements are a switch on whether the argument is true or false.
+Por ejemplo,
+
+bc. def call_block
+  puts "Comienzo del metodo"
+  yield
+  yield
+  puts "Fin del metodo"
+end
+
+@call_block { puts "En el bloque" }@ produce:
+
+bc. Comienzo del metodo
+En el bloque
+En el bloque
+Fin del metodo
+
+yield invoca al bloque asociado con la llamada al metodo que lo contiene
+
+h1. Expresiones Regulares
+
+* Las tiene build-in en el lenguaje
+* La sintaxis es /pattern/
+* Una expresión regular también es un objeto
+
+Por ejemplo, /P(ython|erl)/ saca los strings que contengan Python o Perl
+
+h1. Estructuras de Control
+
+Ruby provee las clasicas estructuras de control como los if y while loops. 
+
+Sintaxis if
 
 bc.. if true
   1
@@ -555,45 +658,31 @@ else
   2
 end
 
-bc.. if false
-  1
-else 
-  2
+ó
+
+bc. código if true
+
+h1. Estructuras de control
+
+Sintaxis while
+
+bc. while true
+  do some code
 end
 
-h1. Control Structures
+ó
 
-Case statements evaluate a statement and execute the code in the corresponding branch:
+bc. some_code while true
 
-bc. case favorite_color
-when "green"
-  puts "Grass is green"
-when "blue"
-  puts "Skies are blue"
-when "red"
-  puts "Tomatoes are red"
-else
-  puts "Are you sure that's a color?"
-end
+h1. Ruby Koans
 
-h1. Control Structures
+Son ejercicios para aprender/practicar Ruby. Aconsejables para cualquier nivel. Tiene también ejercicios sobre metaprogramación.
 
-% TODO LOSE THIS IN FAVOR OF CASE OR SOMETHING MORE USEFUL
+Descargarlos desde "http://rubykoans.com/"http://rubykoans.com
 
-For-in statements allow iteration over a structure such as a list
+h1. Descanso para el Almuerzo
 
-bc. list = [1,2,3,4,5]
-sum = 0
-for n in list
-  sum = sum + n
-end
-sum
-
-h1. Koans
-
-"Ruby Koans":http://rubykoans.com/
-
-h1. Intro To Rails
+h1. Introduccion a Rails
 
 * Rails is a framework for building and deploying web applications
 * It's structured using an architecture called MVC: Model-View-Controller
