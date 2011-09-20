@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start off with some headers
 
-Title: Taller de Ruby/Rails 
-Author: DevChix y amigos
+Title: Taller de Ruby/Rails
+Author: DevChix Uruguay y Amigos
 Generator: text
 
 %css
@@ -27,69 +27,153 @@ table td {
 
 h1. Aprendiendo Ruby and Rails
 
-Buenos días!
+Buenos Días!
 
-h1. Agenda Del Día
+h1. Presentaciones
+
+* Devchix : devchix@ y www.devchix.com
+* RailsBridge en la comunidad Ruby/Rails
+* PyStar en la comunidad Python
+* En Montevideo gente de Cubox, WyeWorks y Moove-it
+
+h1. Agenda del Día
 
 * 9:00 *Presentaciones*
-* 9:30- 13:00 *Instalación del ambiente de trabajo*
-* 10:30-11:30 *Introducción a Ruby*
-* 11:30-12:00 *Ruby Koans*
-* 12:00-1:00 *Almuerzo*
-* 2:45-3:00 *Descanso*
-* 3:00-4:30 *Rails parte 2*
-* 4:30 *Y ahora?*
+* 9:30 - 13:00 *Instalación del ambiente de trabajo*
+* 10:30 -11:30 *Introduction to Ruby*
+* 11:30 -12:00 *Ruby Koans*
+* 12:00 -1:00 *Almuerzo*
+* 1:00 - *Rails parte 1*
+* 2:45 -3:00 *Descanso*
+* 3:00 -4:30 *Rails parte 2*
+* 4:30 *Y ahora? Contribuyendo con Rails*
 
-h1. Que Vamos A Cubrir
+h1. Qué Temas Vamos a Cubrir?
 
-* Syntaxis y operaciones simples de Ruby
+* Ruby
+* Instalando el ambiente de trabajo
+* Sintaxis y operaciones simples en Ruby
 ** Objectos, clases y metodos
+** Bloques y estructuras de control
+** Metaprogramming, tainting, reflection y marshaling // ver como colocar esta parte, solo una idea de que esto existe
+* Testing en Ruby
 * Una introducción a Rails
-** Como usar la maquinaria de Rails para manipular datos de la aplicación
-** Validación de Datos en Rails
+** Cómo usar la maquinaria de Rails para manipular datos en la aplicación** Validación de datos en Rails
 ** Mostrando datos en Rails
-** Usando scaffolding para empezar una simple aplicación
+** Usando scaffolding para comenzar una aplicación simple
 
-h1. Why Ruby?
+h1. Ruby
 
-* It's easy to learn
-* Portland has a strong Ruby community
-* Rails is a popular web framework built on Ruby
-* Rails gives Ruby a good, simple, vocabulary for web development
+* Originado en Japon a mediados de los 90, su creador es Yukihiro "Matz" Matsumoto. Está inspirado en Perl, Lisp entre otros lenguajes
+* "I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python. That's why I decided to design my own language".
+* Ruby es un lenguaje dinamico, reflexivo, orientado a objetos 
+* Hay diferentes implementaciones del lenguaje
+** MRI (mat'z ruby interpreter) es la referencia que hay de Ruby. Está escrito en C
+** JRuby es una implementación hecha en Java
+** IronRuby corre sobre .NET. Es desarrollado por Microsoft bajo la Apache License.
+** Rubinius es hecha en Ruby
+** Otros
 
-h1. Starting Ruby
+h1. Porque Ruby?
 
-Open a terminal window. Type "irb" and hit enter.
+* Fácil de aprender
+* La comunidad de Ruby en Montevideo está creciendo
+* Tiene RubyGems que es el sistema usado para empaquetar y distribuir código Ruby
+* Rails es un web framework bastante popular construido sobre Ruby
+* En 10 años se han agregado una gran cantidad de clases y modulos nativos al lenguaje.
+* Tiene buenas herramientas para testing como RSpec y Cucumber.
 
-% TODO say something about irb is an interpreter
+h1. Instalando el ambiente de trabajo
 
-Try entering a few things: 
+* Todos se sienten comodos manejando una terminal?
+* En linux ó Mac (tener el sistema actualizado e instalado curl y git)
+** RVM: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
+*** @bash < <( curl http://rvm.beginrescueend.com/releasesl/rvm-install-head )@
+*** Seguir las instrucciones para agregar rvm al .bashrc
+*** @source $HOME/.rvm/scripts/rvm@
+*** @rvm notes@
+* En Windows hay que instalar primero Ruby
+** Ruby: Vamos a usar la version 1.9.2 y el interprete MRI
+*** Ir a http://rubyinstaller.org y descargar la versión de Ruby mediante el botón Download. 
+*** Ejecutarla y comenzar la intalación
+
+h1. Instalando el ambiente de trabajo
+
+* En Linux ó Mac
+** Ruby: para este taller usaremos mri y la versión 1.9.2
+*** @rvm install 1.9.2@
+*** mirar rvm help para ver que más se puede hacer
+* En Windows
+** PIK: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
+*** Descargar la última versión http://github.com/vertiginous/pik/downloads
+*** Seguir los pasos de la instalación
+*** Deslogueate o reinicia windows para integrar pik al ambiente.
+*** En una terminal
+**** @pik add@
+**** @pik list@
+**** @pik use 192@
+**** @ruby -v@
+
+h1. Instalando el ambiente de trabajo
+
+* Rails: Vamos a usar la version 3.XX
+** En Linux
+** En Windows
+** En Mac
+
+* Editores: Trabajen en el que se sientan más comodos
+** VIM
+** Textmate
+** Emacs
+** Gedit
+** Eclipse
+** NetBeans
+
+h1.  Abriendo el interprete de Ruby
+
+Abrir una terminal y ejecutar irb. 
+
+Desde hace poco también existe pry y pueden bajarlo desde XX (diferencia???
+
+Jugar un poco:
 
 bc. 1
 4 + 3 
 "hat" 
 [1, 2, 3, "happy"].each { |i| puts i }
 
-@>>@ is your prompt to enter text and @=>@ will appear at the start of each response.
+@>>@ es donde ingresas comandos y en @=>@ va a aparecer la respuesta.
 
-Use the up and down arrow keys to navigate back and forth through the previous commands you've entered.
+irb tiene un historial de comandos. Usen las flechitas para navegarlo.
 
-h1. Basic Ruby Data
+h1. Datos Básicos de Ruby
 
-% TODO more tabley
+% TODO more table
 
-|Numbers | @1@, @2@, @3@ |
+|Integers| @1@, @2@, @3@ |
 |Strings | @"chicken"@ |
 |Booleans| @true@, @false@ |
 |Symbols | @:chicken@ |
 |Arrays  | @[1, 7, "cake"]@ |
 |Hashes  | @{:chicken => "chicken", :sillyexample => :chicken}@ |
 
-Type these at the command line! What happens?
+En Ruby TODO es un objeto. El tipo del objeto es definido por lo que el objeto puede hacer. A esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
 
-That's the data, where are the computations?
+Juega con la terminal!
 
-h1. Basic Ruby Computations
+h1. Datos Básicos en Ruby
+
+* En Java @min = Math.abs(num)@
+* En Ruby @postive = num.abs@ 
+
+* En C @strlen(name)@
+* En Ruby @name.lenght@
+
+Le enviamos un mensaje al propio objeto. Y lo mismo aplica a toods los objetos en Ruby.
+
+En Ruby, NIL es un objeto que representa nada.
+
+h1. Operaciones Basicas en Ruby
 
 | @2 + 2@ | |
 | @3 * 3@ | |
@@ -97,9 +181,9 @@ h1. Basic Ruby Computations
 | @"chicken".length@  | |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
-h1. Basic Ruby Computations
+h1. Operaciones Basicas en Ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | |
@@ -107,9 +191,9 @@ h1. Basic Ruby Computations
 | @"chicken".length@  | |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -117,9 +201,9 @@ h1. Basic Ruby Computations
 | @"chicken".length@  | |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -127,10 +211,10 @@ h1. Basic Ruby Computations
 | @"chicken".length@  | |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -138,10 +222,10 @@ h1. Basic Ruby Computations
 | @"chicken".length@  | @7@ |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
 
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -149,20 +233,10 @@ h1. Basic Ruby Computations
 | @"chicken".length@  | @7@ |
 | @2 + 2 == 4@ | @true@ |
 | @2 + 2 == 5@ | |
-| @[1, 2, 3].include?(2)@ | | |
+| @[1, 2, 3].include?(2)@ | |
 
 
-h1. Basic Ruby Computations
-
-| @2 + 2@ | @4@ |
-| @3 * 3@ | @9@ |
-| @"chicken".reverse@ | @"nekcihc"@ |
-| @"chicken".length@  | @7@ |
-| @2 + 2 == 4@ | @true@ |
-| @2 + 2 == 5@ | @false@ |
-| @[1, 2, 3].include?(2)@ | |  |
-
-h1. Basic Ruby Computations
+h1. Operaciones basicas en ruby
 
 | @2 + 2@ | @4@ |
 | @3 * 3@ | @9@ |
@@ -170,43 +244,37 @@ h1. Basic Ruby Computations
 | @"chicken".length@  | @7@ |
 | @2 + 2 == 4@ | @true@ |
 | @2 + 2 == 5@ | @false@ |
-| @[1, 2, 3].include?(2)@ | | @true@ |
+| @[1, 2, 3].include?(2)@ | |
 
-What do you think @"chicken".reverse.length@ does?
-What about @"puppy".include?("p")@?
+h1. Operaciones basicas en ruby
 
-h1. That's Nice But...
+| @2 + 2@ | @4@ |
+| @3 * 3@ | @9@ |
+| @"chicken".reverse@ | @"nekcihc"@ |
+| @"chicken".length@  | @7@ |
+| @2 + 2 == 4@ | @true@ |
+| @2 + 2 == 5@ | @false@ |
+| @[1, 2, 3].include?(2)@ | @true@ |
 
-* How do we combine steps or use the result of an action?
-* Variables name particular values
-* The same variable can be set to different values at different times
+Y que es lo que hace @"chicken".reverse.length@ ?
+Y @"puppy".include?("p")@?
 
-bc. var1 = 4
-var1
-var2 = "chicken"
-var2
-var2 = var1
-var2
+h1. Interpolación de Expresiones
 
-h1. Interlude: String Interpolation
+Algo que Ruby hace con strings entre comillas dobles es interpolacion de expresiones. Es decir, dentro de un string la secuencia #{expression} es reemplazada por el valor de la expresión.
 
-Something you might want to do is print out a string that has a value
-contained within it.
+Por ejemplo, prueba
 
-For example, try typing
+@"Nuestro array es #{[1,2,3]}"@
 
-@"Our array is #{[1,2,3]}"@
-
-Most useful when dealing with variables!
+Ó
 
 bc. var = [1,2,3,4,5,6]
-"Our array is #{var}"
-
-Now back to variables!
+"Nuestro array es #{var}"
 
 h1. Variables
 
-Try typing the following, noting what happens at each step 
+Qué pasa en cada paso?
 
 bc. thing = "chicken"
 thing
@@ -216,151 +284,145 @@ thing = thing.reverse
 
 h1. Variables
 
-* @thing.reverse@ didn't permanently reverse the string!
-* We had to *set* the value with another assignment statement
-* Some functions do change state
-
-Try 
+Intenten.
 
 bc. awesomelist = [5,2,1,8]
 awesomelist.sort!
 awesomelist
 
-How did that happen? Actions that end with a @!@ *change* the data!
-This is a Ruby convention, but a good one to follow.
+Como paso esto? Acciones que terminen con un @!@ "cambian" los datos!
+Esto es una convención de Ruby, pero una buena a seguir.
+
+h1. Convenciones para Variables
+
+* locales:  comienzan con minuscula o guion bajo
+* globales: comienzan con $
+* de instancia: comienzan con @
+* de clase: comienzan con @@
+* de más de una palabra se escriben con guion bajo. Ej. user_name
+
+h1. Simbolos
+
+Son nombres de constantes que no hay que pre-declarar y que son únicas. Empieza con @:@ y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el simbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.
+
+Por ejemplo:
+
+* @:norte@
+* @:sur@
 
 h1. Hashes
 
-Let's consider a book rating system: 
-* We use numeric values 0-5 to represent a book that you've read
-* :not_rated will represent a book that you haven't rated
-* We'll store all this data in a hash
+* Al igual que los arrays son colecciones indexadas.
+* Las llaves de los arrays deben ser integer pero los hashes pueden tener cualquier objeto como llave.
+* Pueden contener diferentes tipos de elemento en el mismo array/hash.
+* Por defecto el valor para nil en un hash es false. Se puede cambiar al crear el hash.
+* En Ruby 1.9 se introduce un nuevo sintaxis para hashes
 
-Fill in a hash with some books, e.g.
+bc. frutas_color = {
+  naranja:  "naranja",
+  frutilla: "rojo",
+  banana:   "amarillo
+}
+
+@frutas_color[:frutilla]@ 
+
+produce 
+
+@"rojo"@
+
+h1. Hashes
+
+Consideremos un sistema de rating de libros:
+* Usamos valores numericos 0-5 para valorar un libro que hemos leido.
+* :not_rated va a representar un libro que aún no ha sido rated
+* Vamos a guardar los datos en un hash.
+
+Crea un hash y agregale algunos libros, por ejemplo:
 
 bc. books = { "Left Hand of Darkness"        => 5,
-          "The Word for World Is Forest" => 5,
-          "Nevermind the Pollacks"       => 0,
-          "Only Revolutions"             => :not_rated }
+              "The Word for World Is Forest" => 5,
+              "Nevermind the Pollacks"       => 0,
+              "Only Revolutions"             => :not_rated 
+	    }
 
 h1. Hashes
 
-We can retrieve the rating for a particular book like so
+Vamos a obtener el rating de un libro en particular con
 
 @books["Left Hand of Darkness"]@
 
-We can also *set* values like so
+También podemos *setear* valores con
 
 @books["Only Revolutions"] = 3@
 
-How can we add a rating for a new book? Any guesses?
-
-
-h1. Hashes
-
-We can retrieve the rating for a particular book like so
-
-@books["Left Hand of Darkness"]@
-
-We can also *set* values like so
-
-@books["Only Revolutions"] = 3@
-
-How can we add a rating for a new book? Any guesses?
-
-We set the value of the book just like before!
+Agregamos un libro de la misma forma
 
 @books["White Teeth"] = 4@
 
-Now type @books@ to see the whole hash.
+Y con @books@ vemos todo el hash
 
-% TODO what is a method
+Jueguen con el hash en irb
 
-h1. Let's Try Something
-
-@40.reverse@
-
-What happens?
-
-h1. Let's Try Something
+h1. Probemos
 
 @40.reverse@
 
-What happens?
+Qué pasa?
 
-Ruby just reported @NoMethodError: undefined method `reverse' for 40:Fixnum@
+Ruby dijo @NoMethodError: undefined method `reverse' for 40:Fixnum@
 
-That means that @reverse@ is not something you can do to the number 40.
+Significa que @reverse@ no es un metodo que podamos aplicar al número 40
 
-h1. Methods
+h1. Metodos
 
-Most computations in Ruby are performed by *methods*.
-Type @40.methods@ to see which methods are available for basic numbers.
+Los metodos son invocados al enviarles un mensaje al objeto. El mensaje contiene el nombre del metodo asi como cualquier parametro que este necesite.
 
-Notice @+@, @-@, et al. in the list? 
+Si quieren ver los metodos de un objeto pueden escribir @40.methods.sort@
 
-What about @"chicken".methods@ ?
 
-h1. Objects
+h1. Objetos
 
-% TODO better term for piece
+Nuevamente, todo lo que manipulas en Ruby es un objeto y los resultados de esas manipulaciones tambien son objetos. Cada objeto tiene un identificador único.
 
-An object is data along with the methods, computations, that
-can operate on it.
+Un objeto son los datos asi como tambien los metodos que se le puede aplicar.
 
-Everything in Ruby is an object: numbers, strings, hashes, etc.
-
-How do you know what kind of object something is? Ask!
+Como sabemos de qu tipo es un objeto? Sólo hay que preguntarle!
 
 @40.class@
 
-What *is* a class?
+h1. Clases & Metodos
 
-h1. Classes
-
-% TODO wording of templates, descriptions
-
-* Classes are templates for making objects
-* Classes create different types of objects
-** All numbers can be added
-** All strings can be reversed
-* They define kinds of data and methods on that data
-
-
-h1. Classes & Methods
-
-Let's learn the syntax by example:
+Aprendamos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
 end
 
-p. What can we do with @Counter@?
+p. Qué podemos hacer con @Counter@?
 
 @c = Counter.new@
 
 % Step 1 %
 
-h1. Classes & Methods
+h1. Clases & Metodos
 
-Let's learn the syntax by example:
+Aprendemos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
 attr_accessor :value
-
 end
 
-p. Now try
+p. Ahora intentemos
 
 bc. c = Counter.new
 c.value
 c.value = 10
 c.value
 
-What happened? What does @attr_accessor :value@ do?
+Qué pasa? Que es lo que hace @attr_accessor :value@ ?
 
-h1. Classes & Methods
+h1. Clases & Metodos
 
-Let's learn the syntax by example:
+Aprendemos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
   attr_accessor :value
@@ -371,18 +433,18 @@ bc.. class Counter
 
 end
 
-p. Now, again, try
+p. Nuevamente
 
 bc. c = Counter.new
 c.value
 
-@initialize@ gives @new@ instructions on how to create an object
+@initialize@ le da instrucciones a @new@ de como crear un objeto
 
 % Step 2 %
 
-h1. Classes & Methods
+h1. Clases & Metodos
 
-Let's learn the syntax by example:
+Aprendamos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
   attr_accessor :value
@@ -401,7 +463,7 @@ end
 
 h1. Classes
 
-Let's use our Counter class:
+Usemos nuestra clase Counter:
 
 bc. count = Counter.new
 count.increment
@@ -409,17 +471,14 @@ count.increment
 count.value
 
 bc. count.class
-count.methods
+count.methods.sort
+count.responde_to?(:increment)
 
-% change to use respond_to? , have a note about what respond_to? does in speech
+h1. Ejercicio
 
-Try @count.respond_to?("increment")@. What did you see?
+Vamos a agregar un metodo @Counter.increment_by@ que tome un *argumento* por el cual incrementar el contador.
 
-h1. Class Exercise
-
-Let's add a @Counter.increment_by@ method that takes an *argument* for how much to increment.
-
-Don't need to start all over - we *open* the class instead
+No hay que empezar desde cero; podemos sólo *abrir* la clase
 
 bc.. class Counter
 
@@ -429,7 +488,7 @@ end
 
 end
 
-p. Test your code as follows:
+p. Prueba el código que escribiste:
 
 bc. c = Counter.new
 c.increment_by(5)
@@ -437,7 +496,7 @@ c.value
 
 h1. Classes
 
-You can add methods to existing classes as well:
+También se puede agregar metodos a clases ya existentes:
 
 bc. class String
   def chicken?
@@ -448,66 +507,109 @@ end
 bc. "chicken".chicken?
 "puppy".chicken?
 
-@self@ is a way of referring to the object that the method is being called on.
+@self@ es una forma de referirse al objeto del cual el metodo se esta llamando.
 
-In @"puppy".chicken?@, @self@ is @"puppy"@.
+En @"puppy".chicken?@, @self@ es @"puppy"@.
 
-h1. Classes Exercise
 
-Add a method to String that will test to see if a string is a palindrome.
+h1. Clases
 
-A palindrome is any string that is the same read forwards or backwards.
+Si aún no lo han hecho, escriban la clase Counter en su editor favorito y guardenlo en disco. Levantemoslo en la consola de ruby.
 
-To get you started type the following at the command line:
+bc. class Counter
+  attr_accessor :value</code>
+  def initialize
+    @value = 0
+  end
+  def increment
+    @value = @value + 1
+  end
+  def increment_by(n)
+    @value = @value + n
+  end
+
+En la consola: @require 'path_to_your_file'@
+
+h1. Testing
+
+Automatizar cualquier tarea que se pueda hacer más de una vez es una sabia decisión.
+
+* no tener que pasar horas buscando un bug en el código que se escribio hace meses
+* escribir codigo mas robusto y de mejor calidad
+* el código se hace más mantenible
+* más productividad a largo plazo sobre la aplicación
+
+h1. Testing
+
+Ahora escribiremos una clase para testearlo automaticamente.
+
+bc. require 'test/unit'
+  require 'counter'
+  class TestCounter < Test::Unit::TestCase
+    def test_increment
+      assert_equal(1, Counter.new().increment())
+    end
+  end
+
+Escribanlo en un archivo test_counter.rb y ejecutenlo.
+
+h1. Ejercicio
+
+Escribir un test para increment_by.
+
+h1. Ejercicio
+
+Agregar un metodo a String que devuelva si un string es palindromo o no.
+
+Un palindromo es cualquier cadena de caracteres que se lea igual de adelante para atras que de atras para adelante.
+
+Para empezar tipear lo siguiente en la linea de comandos:
 
 bc. class String
   def palindrome?
 
-and finish the rest! Test it on @"abba".palindrome?@ and @"puppy".palindrome?@
+y terminarlo! Pruebenlo con @"abba".palindrome?@ y @"puppy".palindrome?@
 
-h1. Learn more about common Ruby classes
+h1. Más sobre las clases build-in Ruby
 
 "http://rubydoc.info/stdlib/core/":http://rubydoc.info/stdlib/core
 
-Good places to start: Array, Enumerable, Fixnum, Float, Hash, NilClass, String, Time
+Otras son: Array, Enumerable, Fixnum, Float, Hash, NilClass, String, Time
 
-h1. Blocks
+h1. Bloques
 
-% introduce blocks by example first then explain what
-% they are - have other examples of block usage first, sort_by and map as
-% well as just each
-% pull up array documentation or something like that in terms of showing
-% OH HAI some methods take blocks
+Algunos metodos también pueden tener asociados bloques como si fueran parametros.
 
-Some methods take blocks.
-
-@list.each {|p| code}@ runs @code@ on every element of @list@
+@list.each {|p| code}@ corre @code@ en cada elemento de @list@
 
 bc. list = [1,2,3,4]
 list.each { |n| puts (n + 1) }
 
-* A *block* is a computation, but *not* a method
-* A block is of the form @{ |arg1, arg2, ..| code }@
-* @{ |v| v.palindrome? }@
-* @{ |x, y| x * y }@
+* Un *bloque* es un pedazo de código
+* Puede tener dos sintaxis
+** Cuando es sólo una linea @{ |arg1, arg2, ..| code }@
+** @{ |v| v.palindrome? }@
+** @{ |x, y| x * y }@
+** Cuando es más de una linea 
+bc. do |arg|
+    code
+  end
 
-h1. Blocks
+h1. Bloques
 
-% TODO different block iterator than the previous things, something more complicated
-
-A more complicated example of using each:
+Para nuestro ejemplo de los libros.
 
 bc. reviews = Hash.new(0)
 books.values.each { |rate| reviews[rate] = reviews[rate] + 1 }
 reviews
 
-@reviews@ is a count of how many reviews you gave with a particular rating
+Qué contiene @reviews@?
 
 @reviews[5]@
 
-h1. Blocks
+h1. Bloques
 
-There's another way to write blocks. This is commonly used for multi-line expressions.
+Y en caso que el bloque tenga más de una linea
 
 bc. reviews = Hash.new(0)
 books.values.each do |rate|
@@ -515,11 +617,41 @@ books.values.each do |rate|
   # more code can go here...
 end
 
-h1. Control Structures
+h1. Bloques y Callbacks
 
-Ruby provides control structures for writing more complicated code.
+Se pueden usar bloques para implementar callbacks, para pasar pedazos de código e implementar iteradores.
 
-If statements are a switch on whether the argument is true or false.
+Por ejemplo,
+
+bc. def call_block
+  puts "Comienzo del metodo"
+  yield
+  yield
+  puts "Fin del metodo"
+end
+
+@call_block { puts "En el bloque" }@ produce:
+
+bc. Comienzo del metodo
+En el bloque
+En el bloque
+Fin del metodo
+
+yield invoca al bloque asociado con la llamada al metodo que lo contiene
+
+h1. Expresiones Regulares
+
+* Las tiene build-in en el lenguaje
+* La sintaxis es /pattern/
+* Una expresión regular también es un objeto
+
+Por ejemplo, /P(ython|erl)/ saca los strings que contengan Python o Perl
+
+h1. Estructuras de Control
+
+Ruby provee las clasicas estructuras de control como los if y while loops. 
+
+Sintaxis if
 
 bc.. if true
   1
@@ -527,147 +659,121 @@ else
   2
 end
 
-bc.. if false
-  1
-else 
-  2
+ó
+
+bc. código if true
+
+h1. Estructuras de control
+
+Sintaxis while
+
+bc. while true
+  do some code
 end
 
-h1. Control Structures
+ó
 
-Case statements evaluate a statement and execute the code in the corresponding branch:
+bc. some_code while true
 
-bc. case favorite_color
-when "green"
-  puts "Grass is green"
-when "blue"
-  puts "Skies are blue"
-when "red"
-  puts "Tomatoes are red"
-else
-  puts "Are you sure that's a color?"
-end
+h1. Ruby Koans
 
-h1. Control Structures
+Son ejercicios para aprender/practicar Ruby. Aconsejables para cualquier nivel. Tiene también ejercicios sobre metaprogramación.
 
-% TODO LOSE THIS IN FAVOR OF CASE OR SOMETHING MORE USEFUL
+Descargarlos desde "http://rubykoans.com/"http://rubykoans.com
 
-For-in statements allow iteration over a structure such as a list
+h1. Descanso para el Almuerzo
 
-bc. list = [1,2,3,4,5]
-sum = 0
-for n in list
-  sum = sum + n
-end
-sum
+h1. Introduccion a Rails
 
-h1. Koans
+* Rails es un framework para construir aplicaciones web 
+* Está estructurado usando una arquitectura llamada MVC: Model-View-Controller
+* MVC separa diferentes partes de la lógica de la aplicación en secciones en función de para que son usadas. En Rails esto está dividido en diferentes directorios.
+* Rails valora "convención sobre configuración"-- la plataforma toma ciertas assumptions de como vas a construir la aplicación. Esto hace que algunas las tareas que sigan sus convenciones sean muy sencillas y las que no sigan las convenciones de Rails lleven un poco más de trabajo.
 
-"Ruby Koans":http://rubykoans.com/
+h1. Un Apliación en Rails de Ejemplo
 
-h1. Intro To Rails
+Para empezar tipear:
 
-* Rails is a framework for building and deploying web applications
-* It's structured using an architecture called MVC: Model-View-Controller
-* MVC separates different kinds of application logic into sections based on what it's used for. In Rails, these live in separate folders.
-* Rails values "convention over configuration"--the platform will make certain assumptions about how you're going to build your application. This makes tasks that suit Rails' conventions very easy, but actions that don't follow these conventions will take more work.
-
-h1. An Example Rails App
-
-To get started:
-
-# Go to the microrant directory
-# Type @bundle install@
-# Then type @rails server@
-# Open "http://localhost:3000":http://localhost:3000 in your web browser
-
-% (directions for how to run this application and what to do with it as
-% examples - need a script for manipulating it in the web browser.
-% Need examples of 
-% # Viewing data
-% # Creating data
-% # Modifying data
-% # Destroying data
-% End with the Gospel(in the old German sense) of Rails: much of the code
-% needed to do those things can automatically be created by rails
-% ) -->
+# @cd microrant@
+# @bundle install@
+# @rails server@
+# Abrir "http://localhost:3000":http://localhost:3000 en tu navegador
 
 h1. Microrant
 
-* Twitter? Never heard of it.
-* 10 characters to express your anger
-* Basic activities: create, read, update, delete (CRUD)
-* Go to http://localhost:3000/users/new to create a new user with your name
-* Then go to /rants/new and create a new rant
-** Rants can also be edited and deleted--give it a try!
+* Twitter?
+* 10 caracteres para expresar tu ira
+* Actividades basicas: create, read, update, delete (CRUD)
+* Ir a http://localhost:3000/users/new para crear un nuevo usuario con tu nombre
+* Luego ir a /rants/new y crear un nuevo rant
+** Rants también pueden ser editados y borrados!
 
-* What's behind the curtain?
-** Rails provides classes that allow us to retrieve and manipulate data easily 
-** Logic for the application is written in normal Ruby, and a module called ActiveRecord does all of the database connection work for you
+* Que hay detras de escenas?
+** Rails trae clases que nos permiten obtener y maniuplar datos fácilmente
+** La logica de la aplicación se escribe en Ruby común y corrriente, y un modulo llamado ActiveRecord hace todo el trabajo de conección a la base de datos
 
-h1. Behind the Scenes: the database
+h1. En el Backstage: la base de datos
 
-% Describe what a database is, and talk about how the items they're creating are stored in tables %
+% Hablar algo sobre ActiveRecord, ORM y dbms. Mysql, postgresql, sqlite3, nosql databases... $
 
-h1. At The Console
+h1. En La Consola
 
-* Close down the Rails server with Ctrl-C
-* Run @rails console@
-* You can modify the data using @Rant@ and @User@ classes
-* The @User@ class has @id@ and @name@ attributes
-* The @Rant@ class has @id@, @message@, and @user_id@ attributes
+* Cerrar el servidor Rails con Ctrl-C
+* @rails console@
+* Puedes modificar los datos usando las clases @Rant@ y @User@
+* La clase @User@ tiene atributos @id@ y @name@
+* La clase @Rant@ tiene atributos @id@, @message@ y @user_id@
 
-h1. At The Console
+h1. En La Consola
 
-How can we look up a rant after it's been created?
+Como podemos ver un rant luego que fue creado?
 
 bc. r = Rant.find(1)
 r.message
 r.user_id
 
-What about modifying a rant?
+Y como podemos modificarlo?
 
 bc. r.message = "RANTING!"
 r.save
 
-We need to @save@ the changes when we're done editing.
+Necesitamos guardar (@save@) los cambios luego que terminamos de editarlo.
 
-h1. Where's My Stuff
+h1. Donde Estan Mis Cosas
 
-Rails models have built-in finder methods that help you retrieve records from the database.
+Los modelos en Rails tienen metodos de busqueda incroporados que ayuda a obtener los registros desde la base de datos.
 
-Try:
 * @Rant.all@
 * @Rant.order("created_at DESC")@
 * @Rant.first@
 * @Rant.where("user_id = 1")@
 * @Rant.where(:user_id => 1)@
 
-h1. At the Console
+h1. En La Consola
 
-Let's try creating a new Rant, for @user_id@ 1
+Intentemos crear un nuevo Rant para @user_id@ 1
 
 bc. user = User.find(1)
 rant = user.rants.build
 rant.message = "WHAT IS TH"
 rant.save
 
-Note that we didn't need to set the @id@ field of the message!
-That was automatically set by @new@. 
+No tuvimos que setearle el valor de @id@ al mensaje!
+Esto fue automaticamente hecho por @new@. 
 
-We @save@ the record when we're done, in order to create it, just like when we were editing a rant before.
+Guardamos (@save@) el registro cuando terminamos, para poder crearlo, al igual que cuando estabamos editandolo.
 
-h1. At The Console
+h1. En la Consola
 
-Creating a rant that way was verbose. Is there a better way?
+Hay una mejor manera de crear un rant
 
 @User.find(1).rants.create(:message => "E POINT!?")@
 
-Notice that you don't need to save when you use @create@--it combines @new@ and @save@ into a single action.
+De esta forma no tenemos que usar save para guardar pues usamos @create@--quien combina @new@ y @save@ en un sólo paso.
 
-h1. Looking at models
+h1. Mirando a los Modelos
 
-Open up the user.rb and rant.rb model files.
+Abrir los archivos user.rb y rant.rb en el directorio model.
 
 bc.. class Rant < ActiveRecord::Base
 
@@ -686,141 +792,139 @@ class User < ActiveRecord::Base
 
 end
 
-% Instructor should walk through what each part of the model does, including explaining belongs_to and has_many associations %
+h1. Ejercicios
 
-h1. Exercises
+Algunas personas estan escribiendo rants en minusculas! 
 
-Some people are writing in lowercase! This won't do!
-
-Let's write a method that can convert all lowercase rants to uppercase. First, go find the rant.rb file in your Rails models directory.
+Vamos a escribir un metodo para convertir todos los rants a miyusuculas Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
 
 bc. class Rant < ActiveRecord::Base
 before_save :convert_message_to_uppercase
 def convert_message_to_uppercase
   ...
 
-Rails provides many extensions to Ruby classes to make common tasks easier. Look in "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html to find the helper you need for this exercise.
+Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html y encuentren el helper que necesitan para este ejercicio.
 
-Once you've added the code, try creating a lowercase rant and see what happens.
+Una vez que lo hicieron prueben escribir un rant en minusculas para ver que pasa.
 
-h1. Exercises
+h1. Ejercicios
 
-Sometimes you want to work with your data in a different format. Go back to the Rails console and write a program that creates a hash that contains rant messages paired with user names.
+Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consola de Rails y escriban un programa que cree un hash que contenga mensajes rant jungo con el nombre del usuario que lo escribio.
 
-How do you create a new Hash again?
-* Earlier we saw @Hash.new@, but @{}@ is a simpler way.
+Como era que se creaba un Hash?
+* Vimos @Hash.new@ pero también se puede crear con @{}@.
 * Try @new_hash = {}@
 
-The result should look like:
+El resultado deberia ser algo como:
 
 bc. => {"RANTING!"=>"caylee", "WTF"=>"audrey"}
 
-Can you use an iterator to print this out as a series of formatted strings?
-
-% Bonus exercise: amend your code to print out each pair in a formatted string (you'll need an iteration loop like for..each and the Ruby function @puts@ to print out each line). %
-
-% TODO NOTE - have example output for the exercises, more guidance for how to get
-% started, e.g. showing how to define the Hash
+Pueden usar un iterador para mostrarlo como una serie de strings formateados?
 
 h1. Callbacks
 
-The @before_save@ code we wrote earlier uses a *callback*. Rails defines several callbacks that allow you to change the input to a model before or after actions like save, create, update, and delete.
+El código que aparece en @before_save@ usa un *callback*. Rails define varios callbacks que nos permiten cambiar la entrada a un modelo antes o despues de acciones como save, create, update y delete.
 
 bc. before_save :geocode_address
 after_create :notify_admins
 before_validate :check_over_some_other_details
 
-h1. Quality Control
+h1. Control de Calidad
 
-Validations provide an easy wrapper for checking that a particular attribute is present, in the right format, or other requirements before the application will save the data. The microblog application already contains some of these. Look at the Rant and User models to see the ones we've included.
+Las validaciones dan un wrapper sencillo para chequear si un atributo en particular está presente, si esta en el formato correcto u otros requerimientos antes que la aplicación guarde los datos. La aplicación de microblog ya tiene algunos de estos. Miren en los modelos Rant y Iser para ver cuales hemos incluido. 
 
-Can you think of other validations you'd like to add? Try changing the length of a valid Rant message.
+Pueden pensar de algunas otras validaciones que podamos querer usar? Intenten cambiar el largo de un mensaje de Rant válido.
 
-% TODO split into two slides [DONE]
-% callback slide, slide on validations - explain validations as constraints
-% example code with validations/showing actual code
+h1. Mostrando los Datos
 
-h1. Displaying the data
+Rails automaticamente crea vistas con contenido cuando usas el comando @scaffold@. Miren lo que tenemos en /app/views
 
-Rails will automatically create views with content when you use the @scaffold@ command. Go to /app/views and have a look around.
+Estos archivos usan el sistema de templating llamado ERB que convierte lineas de Ruby en la vista en HTML estatico para desplegar. Una linea tipica de ERB podria ser como esto:
 
-These files are making use of a templating system called ERB that converts Ruby statements in the view into static HTML to display. A typical ERB statement might look like:
+Documentación sobre la sintaxis de ERB: "http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html":http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html
 
-% TODO: figure out how to display this without getting clobbered by slideshow's parser %
+h1. Ejercicios
 
-Documentation on ERB syntax: "http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html":http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html
+El sistema de scaffolding es rápido de usar, pero no siempre lindo. Nuestra lista de rants tiene al @user_id@ para la persona que lo dijo pero no su nombre. Cambien eso.
 
-h1. Exercises
+Ir a /app/views/rants/ y abran el archivo index.html. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la linea que muestra el id del usuario y cambienle para mostrar el nombre de usuario.
+`
+h1. Ejercicios
 
-The scaffolding system is quick to use, but not always pretty. Our list of rants lists the @user_id@ for the person who said it, and not their name. Let's change that.
+En la pagina index de usuarios, agreguemos una columna a la table para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado @count@ que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo @User.count@ o @Rants.count@.
 
-Go to /app/views/rants/ and open the index.html file. By default, the scaffolder makes the index view show a list of all records of the related model's type. Find the line that displays the user id and change it to show the user's name instead.
-
-% Instructional note: this may require explaining that you can chain method calls to get rant.user.name %
-
-h1. Exercises
-
-On the users index page, let's add a column to the table to show how many rants each person has written. ActiveRecord makes this easy by providing a method called @count@ that you can add to a collection of records to get the database count instead of the full records. For example, @User.count@ or @Rants.count@.
-
-These also work through has_many associations, so given a particular user record, you could try @user.kittens.count@ or @user.books.count@ (if those associations existed) or ...
-
-% TODO Add, in addition, a calculation for who has written the most rants
-% and a message that says "Congrats, <name>, you're the angriest person here!"
-% AE note - this might be a good one for people moving fast, but the way I would probably recommend doing it is involved enough I'd keep this as a bonus exercise only %
+Esto también funciona mediante asociaciones has_many, por lo que dado un registro de usuario, pueden probar @user.kittens.count@ o @user.books.count@ (si las asociaciones existen) o ...
 
 h1. Routes
 
-How does Rails know what page to go to when you visit "http://localhost:3000/rants/new":http://localhost:3000/rants/new ?
+Como sabe Rails que a que página ir cuando visitas "http://localhost:3000/rants/new":http://localhost:3000/rants/new ?
 
-Open /config/routes.rb to see how this works.
+Abrir /config/routes.rb para ver como funciona.
 
-h1. What about the C in MVC?
+h1. Nos falta la C de MVC
 
-Now that we've seen and edited models and views, let's take a quick look at the controller files in our project.
+Ahora que hemos visto y editado modelos y vistas, vamos a ir a mirar los archivos de controladores en nuestro proyecto.
 
-What does a controller do?
-* It connects the view and the model, calling methods on the models to get the data needed for the view, and allowing you to access input parameters, such as those from a form.
-* It responds to the HTTP request from the browser, and renders the requested type of output (in our scaffolds, this is html or xml, but other things like json can easily be added--instant API!)
-* The controller is also where you would add access control, like only allowing the user who wrote the rant to delete it.
+Qué hace un controlador?
+* Conecta la vista y el modelo, llamando a metodos en los modelos para obtener los datos necesitados en la vista y permitiendote acceder parametros de entrada como los de un formulario.
+* Responde al request HTTP del navegador y renderea el tipo pedido de salida (en nuestros scaffolds es html o xml pero otros como json pueden ser facilmente agregandos -- API instantanea!)
+* También en el controlador es donde se deberia agregar los controles de acceso, como por ejemplo solo permitir que el usuario que escribio el rant pueda eliminarlo.
 
-h1. Making Your Own
+h1. Picando tu propio código
 
-* Exit @microrant@ directory
-* Run @rails new betterrant@
-* Enter the betterrant directory and run:
+* Ir al directorio donde puedas crear una aplicación nueva de Rails
+* Correr @rails new betterrant@
+* Ir al directorio creado @cd betterrant@
 
 bc. bundle install
 rails generate scaffold User name:string
 rails generate scaffold Rant user_id:integer message:string
 rake db:migrate
 
-At this point you can start the server and take a look around.
+En este momento puedes iniciar el servidor y mirar que hay
 
-h1. Summary
+h1. Resumen
 
-* We've reviewed the basics of the Ruby language
-** For a refresher, "Try Ruby":http://tryruby.org/ is a browser based overview of Ruby
-** Ruby has a number of simple types of data such as strings, numbers, arrays, and hashes
-** Most computations in Ruby are handled by methods.
-** A class is a template for creating objects that bundles data and methods
-** Classes can be extended as new needs arise
+* Hemos visto lo básico del lenguaje Ruby
+** Si quieren repasarlo, "Try Ruby":http://tryruby.org/ es una aplicación web para jugar con Ruby
 
-h1. Summary
+% Algo más sobre lo que vimos %
 
-* We've covered a small Rails application: microrants
-** A good next tutorial is "Rails For Zombies":http://railsforzombies.org/
-** More detail can be found in the "Ruby Guides":http://guides.rubyonrails.org/
-** ActiveRecord allows us to manipulate our persistent data like normal objects
-** .erb files allow us to intergrate Ruby code with html
-** Scaffolding gives a way of automating the start of a Rails project
+h1. Resumen
 
-h1. Next Steps
+* Hemos aprendido sobre una pequeña aplicación Rails: microrants
+** Un tutorial que pueden mirar es "Rails For Zombies":http://railsforzombies.org/
+** Y en más detalle pueden encontrar "Ruby Guides":http://guides.rubyonrails.org/
+** ActiveRecord nos permite manipular datos persistidos como si fueran objetos comunes
+** Los archivos .erb nos permiten integrar el código Ruby con html
+** Scaffolding nos da una forma de automatizar el comienzo de un proyecto Rails 
 
-* Try to make betterrant match or improve upon microrant
-* Get involved in the local Ruby "user group":http://pdxruby.org/
-* Start coming to "Code-n-Splode":http://codeandsplode.org/
+h1. Más Para Leer
 
-% TODO what else should go here? mention some materials in the take-home packet?
+* PickAxe es un clásico entre los libros para aprender Ruby. Pueden encontrarlo en <a href="http://pragprog.com">http://pragprog.com</a>
+* Web RubyLang para ver lo último de Ruby: <a href="http://www.ruby-lang.org">http://www.ruby-lang.org</a>
+* La documentación de Ruby <a href="http://www.ruby-doc.org">http://www.ruby-doc.org</a>
+* Meta Koans  http://www.rubyquiz.com/quiz67.html
 
-h1. Stepping outside
+h1. Grupos de Usuarios y Desarrolladores
 
+* Participa en el grupo de Ruby de Uruguay. Comparte lista de correo con los usuarios de Ruby de América del Sur. http://rubysur.org/
+* Otras listas de correo
+** ruby-talk@ruby-lang.org (en ingles)
+** ruby-doc@ruby-lang.org (en ingles) sobre documentación
+** ruby-core@ruby-lang.org (en ingles) sobre implemantación del core de ruby
+** ruby-dev@ruby-lang.org (en ingles) para desarrolladores de ruby
+** RubyConf Uruguay 2011 el próximo fin de semana.
+
+h1. Contribuir con Ruby y con Rails
+
+* Reportar Bugs en Ruby
+** El tracking system está en http://redmine.ruby-lang.org
+** Antes de reportarlo navega los bugs ya reportados para ver si tu bug ya existe. También proba nuevas versiones de ruby por si eso lo soluciona.
+** También es una buena idea enviar una pregunta sobre el bug a la lista de correo ruby-talk.
+** Cuando envias un bug es una buena idea incluir el resultado de ejecutar ruby -v, el sistema operativo y además la problematica del código.
+* Ayudar con la documentación
+** Hacer traducción
+** Mejorar la documentación
+** Hay un sistema llamado RDoc
+** ri es un visor en la consola para esa misma documentación. Tipea ri ClassName para encontrar la documentación de esa clase
