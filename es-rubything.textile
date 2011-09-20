@@ -64,7 +64,8 @@ h1. Qué Temas Vamos a Cubrir?
 
 h1. Ruby
 
-* Originado en Japon a mediados de los 90, su creador es Yukihiro "Matz" Matsumoto. Está inspirado en Perl, Lisp entre otros lenaguajes
+* Originado en Japon a mediados de los 90, su creador es Yukihiro "Matz" Matsumoto. Está inspirado en Perl, Lisp entre otros lenguajes
+* "I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python. That's why I decided to design my own language".
 * Ruby es un lenguaje dinamico, reflexivo, orientado a objetos 
 * Hay diferentes implementaciones del lenguaje
 ** MRI (mat'z ruby interpreter) es la referencia que hay de Ruby. Está escrito en C
@@ -180,7 +181,7 @@ h1. Operaciones Basicas en Ruby
 | @"chicken".length@  | |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
 h1. Operaciones Basicas en Ruby
 
@@ -190,7 +191,7 @@ h1. Operaciones Basicas en Ruby
 | @"chicken".length@  | |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
 h1. Operaciones basicas en ruby
 
@@ -200,7 +201,7 @@ h1. Operaciones basicas en ruby
 | @"chicken".length@  | |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
 h1. Operaciones basicas en ruby
 
@@ -210,7 +211,7 @@ h1. Operaciones basicas en ruby
 | @"chicken".length@  | |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
 
 h1. Operaciones basicas en ruby
@@ -221,7 +222,7 @@ h1. Operaciones basicas en ruby
 | @"chicken".length@  | @7@ |
 | @2 + 2 == 4@ | |
 | @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | | |
+| @[1 , 2, 3].include?(2)@ | |
 
 
 h1. Operaciones basicas en ruby
@@ -232,7 +233,7 @@ h1. Operaciones basicas en ruby
 | @"chicken".length@  | @7@ |
 | @2 + 2 == 4@ | @true@ |
 | @2 + 2 == 5@ | |
-| @[1, 2, 3].include?(2)@ | | |
+| @[1, 2, 3].include?(2)@ | |
 
 
 h1. Operaciones basicas en ruby
@@ -243,7 +244,7 @@ h1. Operaciones basicas en ruby
 | @"chicken".length@  | @7@ |
 | @2 + 2 == 4@ | @true@ |
 | @2 + 2 == 5@ | @false@ |
-| @[1, 2, 3].include?(2)@ | |  |
+| @[1, 2, 3].include?(2)@ | |
 
 h1. Operaciones basicas en ruby
 
@@ -258,7 +259,7 @@ h1. Operaciones basicas en ruby
 Y que es lo que hace @"chicken".reverse.length@ ?
 Y @"puppy".include?("p")@?
 
-h1. Interpolatción de Expresiones
+h1. Interpolación de Expresiones
 
 Algo que Ruby hace con strings entre comillas dobles es interpolacion de expresiones. Es decir, dentro de un string la secuencia #{expression} es reemplazada por el valor de la expresión.
 
@@ -318,16 +319,16 @@ h1. Hashes
 * En Ruby 1.9 se introduce un nuevo sintaxis para hashes
 
 bc. frutas_color = {
-		naranja:  "naranja",
-		frutilla: "rojo",
-		banana:   "amarillo
-	}
+  naranja:  "naranja",
+  frutilla: "rojo",
+  banana:   "amarillo
+}
 
 @frutas_color[:frutilla]@ 
 
 produce 
 
-"rojo"
+@"rojo"@
 
 h1. Hashes
 
@@ -348,15 +349,15 @@ h1. Hashes
 
 Vamos a obtener el rating de un libro en particular con
 
-	@books["Left Hand of Darkness"]@
+@books["Left Hand of Darkness"]@
 
 También podemos *setear* valores con
 
-	@books["Only Revolutions"] = 3@
+@books["Only Revolutions"] = 3@
 
 Agregamos un libro de la misma forma
 
-	@books["White Teeth"] = 4@
+@books["White Teeth"] = 4@
 
 Y con @books@ vemos todo el hash
 
@@ -684,107 +685,95 @@ h1. Descanso para el Almuerzo
 
 h1. Introduccion a Rails
 
-* Rails is a framework for building and deploying web applications
-* It's structured using an architecture called MVC: Model-View-Controller
-* MVC separates different kinds of application logic into sections based on what it's used for. In Rails, these live in separate folders.
-* Rails values "convention over configuration"--the platform will make certain assumptions about how you're going to build your application. This makes tasks that suit Rails' conventions very easy, but actions that don't follow these conventions will take more work.
+* Rails es un framework para construir aplicaciones web 
+* Está estructurado usando una arquitectura llamada MVC: Model-View-Controller
+* MVC separa diferentes partes de la lógica de la aplicación en secciones en función de para que son usadas. En Rails esto está dividido en diferentes directorios.
+* Rails valora "convención sobre configuración"-- la plataforma toma ciertas assumptions de como vas a construir la aplicación. Esto hace que algunas las tareas que sigan sus convenciones sean muy sencillas y las que no sigan las convenciones de Rails lleven un poco más de trabajo.
 
-h1. An Example Rails App
+h1. Un Apliación en Rails de Ejemplo
 
-To get started:
+Para empezar tipear:
 
-# Go to the microrant directory
-# Type @bundle install@
-# Then type @rails server@
-# Open "http://localhost:3000":http://localhost:3000 in your web browser
-
-% (directions for how to run this application and what to do with it as
-% examples - need a script for manipulating it in the web browser.
-% Need examples of 
-% # Viewing data
-% # Creating data
-% # Modifying data
-% # Destroying data
-% End with the Gospel(in the old German sense) of Rails: much of the code
-% needed to do those things can automatically be created by rails
-% ) -->
+# @cd microrant@
+# @bundle install@
+# @rails server@
+# Abrir "http://localhost:3000":http://localhost:3000 en tu navegador
 
 h1. Microrant
 
-* Twitter? Never heard of it.
-* 10 characters to express your anger
-* Basic activities: create, read, update, delete (CRUD)
-* Go to http://localhost:3000/users/new to create a new user with your name
-* Then go to /rants/new and create a new rant
-** Rants can also be edited and deleted--give it a try!
+* Twitter?
+* 10 caracteres para expresar tu ira
+* Actividades basicas: create, read, update, delete (CRUD)
+* Ir a http://localhost:3000/users/new para crear un nuevo usuario con tu nombre
+* Luego ir a /rants/new y crear un nuevo rant
+** Rants también pueden ser editados y borrados!
 
-* What's behind the curtain?
-** Rails provides classes that allow us to retrieve and manipulate data easily 
-** Logic for the application is written in normal Ruby, and a module called ActiveRecord does all of the database connection work for you
+* Que hay detras de escenas?
+** Rails trae clases que nos permiten obtener y maniuplar datos fácilmente
+** La logica de la aplicación se escribe en Ruby común y corrriente, y un modulo llamado ActiveRecord hace todo el trabajo de conección a la base de datos
 
-h1. Behind the Scenes: the database
+h1. En el Backstage: la base de datos
 
-% Describe what a database is, and talk about how the items they're creating are stored in tables %
+% Hablar algo sobre ActiveRecord, ORM y dbms. Mysql, postgresql, sqlite3, nosql databases... $
 
-h1. At The Console
+h1. En La Consola
 
-* Close down the Rails server with Ctrl-C
-* Run @rails console@
-* You can modify the data using @Rant@ and @User@ classes
-* The @User@ class has @id@ and @name@ attributes
-* The @Rant@ class has @id@, @message@, and @user_id@ attributes
+* Cerrar el servidor Rails con Ctrl-C
+* @rails console@
+* Puedes modificar los datos usando las clases @Rant@ y @User@
+* La clase @User@ tiene atributos @id@ y @name@
+* La clase @Rant@ tiene atributos @id@, @message@ y @user_id@
 
-h1. At The Console
+h1. En La Consola
 
-How can we look up a rant after it's been created?
+Como podemos ver un rant luego que fue creado?
 
 bc. r = Rant.find(1)
 r.message
 r.user_id
 
-What about modifying a rant?
+Y como podemos modificarlo?
 
 bc. r.message = "RANTING!"
 r.save
 
-We need to @save@ the changes when we're done editing.
+Necesitamos guardar (@save@) los cambios luego que terminamos de editarlo.
 
-h1. Where's My Stuff
+h1. Donde Estan Mis Cosas
 
-Rails models have built-in finder methods that help you retrieve records from the database.
+Los modelos en Rails tienen metodos de busqueda incroporados que ayuda a obtener los registros desde la base de datos.
 
-Try:
 * @Rant.all@
 * @Rant.order("created_at DESC")@
 * @Rant.first@
 * @Rant.where("user_id = 1")@
 * @Rant.where(:user_id => 1)@
 
-h1. At the Console
+h1. En La Consola
 
-Let's try creating a new Rant, for @user_id@ 1
+Intentemos crear un nuevo Rant para @user_id@ 1
 
 bc. user = User.find(1)
 rant = user.rants.build
 rant.message = "WHAT IS TH"
 rant.save
 
-Note that we didn't need to set the @id@ field of the message!
-That was automatically set by @new@. 
+No tuvimos que setearle el valor de @id@ al mensaje!
+Esto fue automaticamente hecho por @new@. 
 
-We @save@ the record when we're done, in order to create it, just like when we were editing a rant before.
+Guardamos (@save@) el registro cuando terminamos, para poder crearlo, al igual que cuando estabamos editandolo.
 
-h1. At The Console
+h1. En la Consola
 
-Creating a rant that way was verbose. Is there a better way?
+Hay una mejor manera de crear un rant
 
 @User.find(1).rants.create(:message => "E POINT!?")@
 
-Notice that you don't need to save when you use @create@--it combines @new@ and @save@ into a single action.
+De esta forma no tenemos que usar save para guardar pues usamos @create@--quien combina @new@ y @save@ en un sólo paso.
 
-h1. Looking at models
+h1. Mirando a los Modelos
 
-Open up the user.rb and rant.rb model files.
+Abrir los archivos user.rb y rant.rb en el directorio model.
 
 bc.. class Rant < ActiveRecord::Base
 
@@ -803,51 +792,44 @@ class User < ActiveRecord::Base
 
 end
 
-% Instructor should walk through what each part of the model does, including explaining belongs_to and has_many associations %
+h1. Ejercicios
 
-h1. Exercises
+Algunas personas estan escribiendo rants en minusculas! 
 
-Some people are writing in lowercase! This won't do!
-
-Let's write a method that can convert all lowercase rants to uppercase. First, go find the rant.rb file in your Rails models directory.
+Vamos a escribir un metodo para convertir todos los rants a miyusuculas Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
 
 bc. class Rant < ActiveRecord::Base
 before_save :convert_message_to_uppercase
 def convert_message_to_uppercase
   ...
 
-Rails provides many extensions to Ruby classes to make common tasks easier. Look in "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html to find the helper you need for this exercise.
+Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html y encuentren el helper que necesitan para este ejercicio.
 
-Once you've added the code, try creating a lowercase rant and see what happens.
+Una vez que lo hicieron prueben escribir un rant en minusculas para ver que pasa.
 
-h1. Exercises
+h1. Ejercicios
 
-Sometimes you want to work with your data in a different format. Go back to the Rails console and write a program that creates a hash that contains rant messages paired with user names.
+Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consola de Rails y escriban un programa que cree un hash que contenga mensajes rant jungo con el nombre del usuario que lo escribio.
 
-How do you create a new Hash again?
-* Earlier we saw @Hash.new@, but @{}@ is a simpler way.
+Como era que se creaba un Hash?
+* Vimos @Hash.new@ pero también se puede crear con @{}@.
 * Try @new_hash = {}@
 
-The result should look like:
+El resultado deberia ser algo como:
 
 bc. => {"RANTING!"=>"caylee", "WTF"=>"audrey"}
 
-Can you use an iterator to print this out as a series of formatted strings?
-
-% Bonus exercise: amend your code to print out each pair in a formatted string (you'll need an iteration loop like for..each and the Ruby function @puts@ to print out each line). %
-
-% TODO NOTE - have example output for the exercises, more guidance for how to get
-% started, e.g. showing how to define the Hash
+Pueden usar un iterador para mostrarlo como una serie de strings formateados?
 
 h1. Callbacks
 
-The @before_save@ code we wrote earlier uses a *callback*. Rails defines several callbacks that allow you to change the input to a model before or after actions like save, create, update, and delete.
+El códoigo que aparece en @before_save@ usa un *callback*. Rails define varios callbacks que nos permiten cambiar la entrada a un modelo antes o despues de acciones como save, create, update y delete.
 
 bc. before_save :geocode_address
 after_create :notify_admins
 before_validate :check_over_some_other_details
 
-h1. Quality Control
+h1. Control de Calidad
 
 Validations provide an easy wrapper for checking that a particular attribute is present, in the right format, or other requirements before the application will save the data. The microblog application already contains some of these. Look at the Rant and User models to see the ones we've included.
 
@@ -931,7 +913,7 @@ h1. Summary
 ** .erb files allow us to intergrate Ruby code with html
 ** Scaffolding gives a way of automating the start of a Rails project
 
-h1. Next Steps
+h1. Más Para Leer
 
 * Try to make betterrant match or improve upon microrant
 * Participa en el grupo de Ruby de Uruguay
@@ -939,6 +921,10 @@ h1. Next Steps
 ** PickAxe es un clásico entre los libros para aprender Ruby. Pueden encontrarlo en <a href="http://pragprog.com">http://pragprog.com</a>
 ** Web RubyLang para ver lo último de Ruby: <a href="http://www.ruby-lang.org">http://www.ruby-lang.org</a>
 ** La documentación de Ruby <a href="http://www.ruby-doc.org">http://www.ruby-doc.org</a>
+** Meta Koans  http://www.rubyquiz.com/quiz67.html
+
+h1. Grupos de Usuarios y Desarrolladores
+
 ** Mailing Lists 
 *** ruby-sur@ ?
 *** ruby-uruguay@ ?
