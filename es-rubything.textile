@@ -40,7 +40,7 @@ h1. Agenda del Día
 
 * 9:00 *Presentaciones*
 * 9:30 - 13:00 *Instalación del ambiente de trabajo*
-* 10:30 -11:30 *Introduction to Ruby*
+* 10:30 -11:30 *Introducción to Ruby*
 * 11:30 -12:00 *Ruby Koans*
 * 12:00 -1:00 *Almuerzo*
 * 1:00 - *Rails parte 1*
@@ -50,10 +50,10 @@ h1. Agenda del Día
 
 h1. Qué Temas Vamos a Cubrir?
 
-* Ruby
+* Ruby	
 * Instalando el ambiente de trabajo
 * Sintaxis y operaciones simples en Ruby
-** Objectos, clases y metodos
+** Objetos, clases y metodos
 ** Bloques y estructuras de control
 ** Metaprogramming, tainting, reflection y marshaling // ver como colocar esta parte, solo una idea de que esto existe
 * Testing en Ruby
@@ -128,6 +128,7 @@ h1. Instalando el ambiente de trabajo
 ** Gedit
 ** Eclipse
 ** NetBeans
+** RubyMine
 
 h1.  Abriendo el interprete de Ruby
 
@@ -157,7 +158,29 @@ h1. Datos Básicos de Ruby
 |Arrays  | @[1, 7, "cake"]@ |
 |Hashes  | @{:chicken => "chicken", :sillyexample => :chicken}@ |
 
-En Ruby TODO es un objeto. El tipo del objeto es definido por lo que el objeto puede hacer. A esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
+En Ruby __casi todo__ es un objeto. El tipo del objeto es definido por lo que el objeto puede hacer. A esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
+% Esto no está muy claro o muy bien expresado ...
+% Las estructuras de control no son objetos ni mensajes que se envian a otros objetos, por eso la aclaracion de __casi todo__, en algún que otro lenguaje esto si se cumple.
+% La definicion de Duck Typing no es "El tipo del objeto es definido por lo que el objeto puede hacer".
+Duck Typing indica que a un objeto le podemos enviar los mensajes a los que el objeto puede responder, sin importar el tipo del objeto. Comunmente se dice: "Si camina como un pato y habla como un pato, entonces es un pato"
+
+Si por tipo del objeto entendemos "Lo que el objeto puede hacer", entonces cabe la pregunta "Que es lo que puede hacer el objeto?", la respuesta sería: "Todo lo que hace es recibir mensajes, los mensajes que puede recibir estan determinados por los metodos del objeto". Quién determina los métodos del objeto? La clase del objeto.
+
+Cuál es la clase de un objeto? Depende, puede ser la clase a partir de la cual se creó el objeto, o la clase Singleton del objeto (clase Eigen, es una clase anónima). 
+
+O sea que el tipo de un objeto es la clase del objeto.
+
+Ejemplos:
+
+bc. irb> names = ['jessie', 'john']
+irb> numbers = [1, 2, 3, 4]
+irb> def numbers.multiply
+irb>   inject(:*)
+irb> end
+
+La clase de @names@ es @Array@ y no contiene el método @multiply@
+La clase de @numbers@ es una clase @Singleton@, única al objeto, que contiene la definición del método @multiply@.
+
 
 Juega con la terminal!
 
@@ -171,7 +194,7 @@ h1. Datos Básicos en Ruby
 
 Le enviamos un mensaje al propio objeto. Y lo mismo aplica a toods los objetos en Ruby.
 
-En Ruby, NIL es un objeto que representa nada.
+En Ruby, NIL es un objeto que representa ausencia de valor.
 
 h1. Operaciones Basicas en Ruby
 
@@ -386,9 +409,18 @@ Nuevamente, todo lo que manipulas en Ruby es un objeto y los resultados de esas 
 
 Un objeto son los datos asi como tambien los metodos que se le puede aplicar.
 
+Un objeto es una estructura con identidad, estado y un comportamiento definidos.
+
 Como sabemos de qu tipo es un objeto? Sólo hay que preguntarle!
 
 @40.class@
+
+% Esto no es 100% correcto. El método .class devuelve la clase a partir de la cuál se creó el objeto. En el ejemplo anterior sobre tipo, numbers.class devuelve Array, pero Array no es el tipo del objeto, o sea, no es "Lo que el objeto puede hacer". Lo cambiaria por:
+
+Como averiguamos la clase origen de un objeto? Sólo hay que preguntarle!
+
+@40.class@
+
 
 h1. Clases & Metodos
 
@@ -472,13 +504,15 @@ count.value
 
 bc. count.class
 count.methods.sort
-count.responde_to?(:increment)
+count.respond_to?(:increment)
 
 h1. Ejercicio
 
 Vamos a agregar un metodo @Counter.increment_by@ que tome un *argumento* por el cual incrementar el contador.
 
 No hay que empezar desde cero; podemos sólo *abrir* la clase
+
+% Sería bueno aclarar que abrir una clase es una mala práctica, que si bien es útil y rapido en algunos casos, existen otras prácticas mejores para agregar nuevo comportamiento a una clase.
 
 bc.. class Counter
 
@@ -541,7 +575,7 @@ Automatizar cualquier tarea que se pueda hacer más de una vez es una sabia deci
 
 h1. Testing
 
-Ahora escribiremos una clase para testearlo automaticamente.
+Ahora escribiremos una clase para testearlo automáticamente.
 
 bc. require 'test/unit'
   require 'counter'
@@ -570,7 +604,7 @@ bc. class String
 
 y terminarlo! Pruebenlo con @"abba".palindrome?@ y @"puppy".palindrome?@
 
-h1. Más sobre las clases build-in Ruby
+h1. Más sobre las clases built-in Ruby
 
 "http://rubydoc.info/stdlib/core/":http://rubydoc.info/stdlib/core
 
@@ -585,7 +619,7 @@ Algunos metodos también pueden tener asociados bloques como si fueran parametro
 bc. list = [1,2,3,4]
 list.each { |n| puts (n + 1) }
 
-* Un *bloque* es un pedazo de código
+* Un *bloque* es un pedazo de código asociado a un contexto de variables.
 * Puede tener dos sintaxis
 ** Cuando es sólo una linea @{ |arg1, arg2, ..| code }@
 ** @{ |v| v.palindrome? }@
@@ -641,11 +675,11 @@ yield invoca al bloque asociado con la llamada al metodo que lo contiene
 
 h1. Expresiones Regulares
 
-* Las tiene build-in en el lenguaje
+* Las tiene built-in en el lenguaje
 * La sintaxis es /pattern/
 * Una expresión regular también es un objeto
 
-Por ejemplo, /P(ython|erl)/ saca los strings que contengan Python o Perl
+Por ejemplo, /P(ython|erl)/ matchea los strings que contengan Python o Perl
 
 h1. Estructuras de Control
 
