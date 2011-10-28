@@ -40,7 +40,7 @@ h1. Agenda del Día
 
 * 9:00 *Presentaciones*
 * 9:30 - 13:00 *Instalación del ambiente de trabajo*
-* 10:30 -11:30 *Introducción to Ruby*
+* 10:30 -11:30 *Introducción a Ruby*
 * 11:30 -12:00 *Ruby Koans*
 * 12:00 -1:00 *Almuerzo*
 * 1:00 - *Rails parte 1*
@@ -53,30 +53,35 @@ h1. Qué Temas Vamos a Cubrir?
 * Ruby	
 * Instalando el ambiente de trabajo
 * Sintaxis y operaciones simples en Ruby
-** Objetos, clases y metodos
+** Objetos, clases, modulos y metodos
+** Testing en Ruby
 ** Bloques y estructuras de control
-** Metaprogramming, tainting, reflection y marshaling // ver como colocar esta parte, solo una idea de que esto existe
-* Testing en Ruby
+** Expresiones regulares
+** Excepciones
 * Una introducción a Rails
-** Cómo usar la maquinaria de Rails para manipular datos en la aplicación** Validación de datos en Rails
-** Mostrando datos en Rails
-** Usando scaffolding para comenzar una aplicación simple
+** ...
 
 h1. Ruby
 
 * Originado en Japon a mediados de los 90, su creador es Yukihiro "Matz" Matsumoto. Está inspirado en Perl, Lisp entre otros lenguajes
 * "I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python. That's why I decided to design my own language".
-* Ruby es un lenguaje dinamico, reflexivo, orientado a objetos 
+* Ruby es un lenguaje
+** dinamico
+** reflexivo
+** orientado a objetos 
+** open source
 * Hay diferentes implementaciones del lenguaje
 ** MRI (mat'z ruby interpreter) es la referencia que hay de Ruby. Está escrito en C
 ** JRuby es una implementación hecha en Java
 ** IronRuby corre sobre .NET. Es desarrollado por Microsoft bajo la Apache License.
-** Rubinius es hecha en Ruby
-** Otros
+** Rubinius esta hecho en Ruby
+* Versiones
+** 1.8.7
+** 1.9.2 <-- recomendada
 
 h1. Porque Ruby?
 
-* Fácil de aprender
+* "Lenguajes de Programación deben sentirse natural para los programadores."
 * La comunidad de Ruby en Montevideo está creciendo
 * Tiene RubyGems que es el sistema usado para empaquetar y distribuir código Ruby
 * Rails es un web framework bastante popular construido sobre Ruby
@@ -103,6 +108,9 @@ h1. Instalando el ambiente de trabajo
 ** Ruby: para este taller usaremos mri y la versión 1.9.2
 *** @rvm install 1.9.2@
 *** mirar rvm help para ver que más se puede hacer
+
+h1. Instalando el ambiente de trabajo
+
 * En Windows
 ** PIK: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
 *** Descargar la última versión http://github.com/vertiginous/pik/downloads
@@ -113,13 +121,19 @@ h1. Instalando el ambiente de trabajo
 **** @pik list@
 **** @pik use 192@
 **** @ruby -v@
+** Ó Ruby Installer: Un ejecutable que instala Ruby y Ruby Gems 
+*** Descargar la ultima verisón de http://rubyinstaller.org
+*** Seguir los pasos de la instalación
+*** Instalar pik mediante @gem install pik
 
 h1. Instalando el ambiente de trabajo
 
-* Rails: Vamos a usar la version 3.XX
+* Instalar Ruby Gems
 ** En Linux
-** En Windows
-** En Mac
+*** @apt-get install rubygems
+** En Windows RubyInstaller ya viene con Ruby Gems
+* Rails: Vamos a usar la version 3.1
+*** @gem install rails
 
 * Editores: Trabajen en el que se sientan más comodos
 ** VIM
@@ -158,31 +172,29 @@ h1. Datos Básicos de Ruby
 |Arrays  | @[1, 7, "cake"]@ |
 |Hashes  | @{:chicken => "chicken", :sillyexample => :chicken}@ |
 
-En Ruby __casi todo__ es un objeto. El tipo del objeto es definido por lo que el objeto puede hacer. A esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
-% Esto no está muy claro o muy bien expresado ...
+En Ruby __casi todo__ es un objeto. A un objeto se le puede neviar los mensajes a los que el objeto puede responder. A grandes rasgos a esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
+Juega con la terminal!
+
+% Esto no está muy claro <<--- MIRAR COMO INCLUIR LA EIGENCLASS
 % Las estructuras de control no son objetos ni mensajes que se envian a otros objetos, por eso la aclaracion de __casi todo__, en algún que otro lenguaje esto si se cumple.
 % La definicion de Duck Typing no es "El tipo del objeto es definido por lo que el objeto puede hacer".
-Duck Typing indica que a un objeto le podemos enviar los mensajes a los que el objeto puede responder, sin importar el tipo del objeto. Comunmente se dice: "Si camina como un pato y habla como un pato, entonces es un pato"
+% Duck Typing indica que a un objeto le podemos enviar los mensajes a los que el objeto puede responder, sin importar el tipo del objeto. Comunmente se dice: "Si camina como un pato y habla como un pato, entonces es un pato"
+% Si por tipo del objeto entendemos "Lo que el objeto puede hacer", entonces cabe la pregunta "Que es lo que puede hacer el objeto?", la respuesta sería: "Todo lo que hace es recibir mensajes, los mensajes que puede recibir estan determinados por los metodos del objeto". Quién determina los métodos del objeto? La clase del objeto.
 
-Si por tipo del objeto entendemos "Lo que el objeto puede hacer", entonces cabe la pregunta "Que es lo que puede hacer el objeto?", la respuesta sería: "Todo lo que hace es recibir mensajes, los mensajes que puede recibir estan determinados por los metodos del objeto". Quién determina los métodos del objeto? La clase del objeto.
+% Cuál es la clase de un objeto? Depende, puede ser la clase a partir de la cual se creó el objeto, o la clase Singleton del objeto (clase Eigen, es una clase anónima). 
+% O sea que el tipo de un objeto es la clase del objeto.
 
-Cuál es la clase de un objeto? Depende, puede ser la clase a partir de la cual se creó el objeto, o la clase Singleton del objeto (clase Eigen, es una clase anónima). 
+% Ejemplos:
 
-O sea que el tipo de un objeto es la clase del objeto.
+% bc. irb> names = ['jessie', 'john']
+% irb> numbers = [1, 2, 3, 4]
+% irb> def numbers.multiply
+% irb>   inject(:*)
+% irb> end
 
-Ejemplos:
+% La clase de @names@ es @Array@ y no contiene el método @multiply@
+% La clase de @numbers@ es una clase @Singleton@, única al objeto, que contiene la definición del método @multiply@.
 
-bc. irb> names = ['jessie', 'john']
-irb> numbers = [1, 2, 3, 4]
-irb> def numbers.multiply
-irb>   inject(:*)
-irb> end
-
-La clase de @names@ es @Array@ y no contiene el método @multiply@
-La clase de @numbers@ es una clase @Singleton@, única al objeto, que contiene la definición del método @multiply@.
-
-
-Juega con la terminal!
 
 h1. Datos Básicos en Ruby
 
@@ -195,79 +207,6 @@ h1. Datos Básicos en Ruby
 Le enviamos un mensaje al propio objeto. Y lo mismo aplica a toods los objetos en Ruby.
 
 En Ruby, NIL es un objeto que representa ausencia de valor.
-
-h1. Operaciones Basicas en Ruby
-
-| @2 + 2@ | |
-| @3 * 3@ | |
-| @"chicken".reverse@ | |
-| @"chicken".length@  | |
-| @2 + 2 == 4@ | |
-| @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | |
-
-h1. Operaciones Basicas en Ruby
-
-| @2 + 2@ | @4@ |
-| @3 * 3@ | |
-| @"chicken".reverse@ | |
-| @"chicken".length@  | |
-| @2 + 2 == 4@ | |
-| @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | |
-
-h1. Operaciones basicas en ruby
-
-| @2 + 2@ | @4@ |
-| @3 * 3@ | @9@ |
-| @"chicken".reverse@ | |
-| @"chicken".length@  | |
-| @2 + 2 == 4@ | |
-| @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | |
-
-h1. Operaciones basicas en ruby
-
-| @2 + 2@ | @4@ |
-| @3 * 3@ | @9@ |
-| @"chicken".reverse@ | @"nekcihc"@ |
-| @"chicken".length@  | |
-| @2 + 2 == 4@ | |
-| @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | |
-
-
-h1. Operaciones basicas en ruby
-
-| @2 + 2@ | @4@ |
-| @3 * 3@ | @9@ |
-| @"chicken".reverse@ | @"nekcihc"@ |
-| @"chicken".length@  | @7@ |
-| @2 + 2 == 4@ | |
-| @2 + 2 == 5@ | |
-| @[1 , 2, 3].include?(2)@ | |
-
-
-h1. Operaciones basicas en ruby
-
-| @2 + 2@ | @4@ |
-| @3 * 3@ | @9@ |
-| @"chicken".reverse@ | @"nekcihc"@ |
-| @"chicken".length@  | @7@ |
-| @2 + 2 == 4@ | @true@ |
-| @2 + 2 == 5@ | |
-| @[1, 2, 3].include?(2)@ | |
-
-
-h1. Operaciones basicas en ruby
-
-| @2 + 2@ | @4@ |
-| @3 * 3@ | @9@ |
-| @"chicken".reverse@ | @"nekcihc"@ |
-| @"chicken".length@  | @7@ |
-| @2 + 2 == 4@ | @true@ |
-| @2 + 2 == 5@ | @false@ |
-| @[1, 2, 3].include?(2)@ | |
 
 h1. Operaciones basicas en ruby
 
@@ -288,7 +227,7 @@ Algo que Ruby hace con strings entre comillas dobles es interpolacion de expresi
 
 Por ejemplo, prueba
 
-@"Nuestro array es #{[1,2,3]}"@
+bc. @"Nuestro array es #{[1,2,3]}"@
 
 Ó
 
@@ -296,6 +235,8 @@ bc. var = [1,2,3,4,5,6]
 "Nuestro array es #{var}"
 
 h1. Variables
+
+Las variables son implícitas y declaradas.
 
 Qué pasa en cada paso?
 
@@ -316,17 +257,20 @@ awesomelist
 Como paso esto? Acciones que terminen con un @!@ "cambian" los datos!
 Esto es una convención de Ruby, pero una buena a seguir.
 
-h1. Convenciones para Variables
+h1. Convenciones para Variables y Alcance
 
 * locales:  comienzan con minuscula o guion bajo
 * globales: comienzan con $
 * de instancia: comienzan con @
 * de clase: comienzan con @@
 * de más de una palabra se escriben con guion bajo. Ej. user_name
+* constantes en mayuscula
+
+Hay tres lugares donde el alcance cambia: las definiciones de clases (class), las definiciones de modulos (module) y los metodos (def)
 
 h1. Simbolos
 
-Son nombres de constantes que no hay que pre-declarar y que son únicas. Empieza con @:@ y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el simbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.
+Son etiquetas que no hay que pre-declarar y que son únicas. Empieza con @:@ y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el simbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.
 
 Por ejemplo:
 
@@ -335,6 +279,7 @@ Por ejemplo:
 
 h1. Hashes
 
+* También es un tipo built-in. 
 * Al igual que los arrays son colecciones indexadas.
 * Las llaves de los arrays deben ser integer pero los hashes pueden tener cualquier objeto como llave.
 * Pueden contener diferentes tipos de elemento en el mismo array/hash.
@@ -347,11 +292,9 @@ bc. frutas_color = {
   banana:   "amarillo
 }
 
-@frutas_color[:frutilla]@ 
+@frutas_color[:frutilla]@ produce @"rojo"@
 
-produce 
-
-@"rojo"@
+También conocidos como Map, Associative Array, Dictionary, Key/Value Pair Store
 
 h1. Hashes
 
@@ -410,12 +353,6 @@ Nuevamente, todo lo que manipulas en Ruby es un objeto y los resultados de esas 
 Un objeto son los datos asi como tambien los metodos que se le puede aplicar.
 
 Un objeto es una estructura con identidad, estado y un comportamiento definidos.
-
-Como sabemos de qu tipo es un objeto? Sólo hay que preguntarle!
-
-@40.class@
-
-% Esto no es 100% correcto. El método .class devuelve la clase a partir de la cuál se creó el objeto. En el ejemplo anterior sobre tipo, numbers.class devuelve Array, pero Array no es el tipo del objeto, o sea, no es "Lo que el objeto puede hacer". Lo cambiaria por:
 
 Como averiguamos la clase origen de un objeto? Sólo hay que preguntarle!
 
@@ -491,9 +428,22 @@ bc.. class Counter
 
 end
 
-% Step 4 %
+h1. Clases & Metodos
 
-h1. Classes
+Estas definiciones de un metodo son equivalentes:
+
+bc.. def increment x
+    x + 1
+  end
+
+  def increment(x)
+    return x + 1;
+  end
+
+  def increment(x); x + 1; end
+end
+
+h1. Clases
 
 Usemos nuestra clase Counter:
 
@@ -528,7 +478,7 @@ bc. c = Counter.new
 c.increment_by(5)
 c.value
 
-h1. Classes
+h1. Clases
 
 También se puede agregar metodos a clases ya existentes:
 
@@ -563,6 +513,18 @@ bc. class Counter
   end
 
 En la consola: @require 'path_to_your_file'@
+
+h1. Modulos
+
+Un modulo es básicamente una clase que no puede ser instanciada. 
+
+h1. Control de Acceso
+
+Ruby tiene tres niveles de protección para constantes y mteodos de clase y modulo.
+
+* private. Accesible para todo el mundo.
+* protected. Puede ser sólo invocado por objetos la clase definida y sus subclases.
+* public. Puede ser solo llamado en una forma funcional (con un self implicito). Por lo tanto metodos privados solo pueden ser llamados en la clase definida y por los ancestros y descendientes de la clase, pero solo dentro del mismo objeto. 
 
 h1. Testing
 
@@ -673,13 +635,41 @@ Fin del metodo
 
 yield invoca al bloque asociado con la llamada al metodo que lo contiene
 
-h1. Expresiones Regulares
+h1. Lambdas y Procs
 
-* Las tiene built-in en el lenguaje
-* La sintaxis es /pattern/
-* Una expresión regular también es un objeto
+Los bloques no son objetos pero pueden ser convertidos en objectos mediante la clase Proc.  Hay varias formas de convertir un bloque en un objeto Proc:
 
-Por ejemplo, /P(ython|erl)/ matchea los strings que contengan Python o Perl
+* Pasando un bloque a un metodo cuyo último parametro es prefijado con un ampersand.
+
+bc. def metodo(p1, p2, &bloque)
+  puts bloque.inspect
+end
+metodo(1,2) { "un bloque" }
+metodo(3,4)
+
+* Llamando Proc.new
+
+bc. Proc.new{ "un bloque" }
+
+h1. Lambdas y Procs
+
+* Llamando a el metodo Object#lambda asocia un bloque con la llamada lambda{ "un bloque" }
+
+* En 1.9 usando la sintaxis 
+
+bc. lam =->(p1,p2) {p1 + p2}
+lam.call(4,3)
+
+h1. Lambdas y Procs
+
+Diferencias entre Procs y Lambdas:
+
+* Return keyword. 
+** En un lambda, return retorna desde el lambda. 
+** En un proc el return retorna desde el alcance donde el proc fue definido.
+* Argumentos. 
+** Si se llama a un lambda con una aridad incorrecta entonces falla con ArgumentError. 
+** Los Proc son más flexibles y toman la cantidad de argumentos necesaria llenando los no dados con nil.
 
 h1. Estructuras de Control
 
@@ -687,7 +677,7 @@ Ruby provee las clasicas estructuras de control como los if y while loops.
 
 Sintaxis if
 
-bc.. if true
+bc. if true
   1
 else 
   2
@@ -709,6 +699,52 @@ end
 
 bc. some_code while true
 
+h1. Iteradores
+
+bc. 3.times{ puts "Hola mundo!" }
+
+bc. 5.downto(1){|i| puts "Cuenta regresiva #{i}."}
+
+bc. animals = ["gato", "perro", "caballo"]
+animals.each do |animal|
+  puts "Tenemos un #{animal}."
+end
+
+bc.. my_hash = {:type => "cat",
+              :name => "Beckett",
+	      :breed => "alley cat"}
+my_hash.each do |key, value|
+  puts "My #{key.to_s} is #{value}" 
+end
+
+bc. my_hash.each_pair{|k,v| puts "key: #{k} con su valor #{v}"}
+
+h1. Expresiones Regulares
+
+* Ruby las tiene built-in en el lenguaje
+* La sintaxis es /pattern/
+* Una expresión regular también es un objeto. Son instancias de la clase Regexp
+
+Por ejemplo, /P(ython|erl)/ matchea los strings que contengan Python o Perl
+
+h1. Excepciones
+
+Información de una excepción viene encapsulada en un objeto de clase Exception o alguno de sus "hijos".
+
+Para manejar excepciones:
+
+bc.. begin
+# .. procesar
+rescue
+# .. manejar el error
+ensure
+# ..codigo que siempre se ejecuta (por ejemplo f.close para un archivo f)
+end
+
+Para levantar excepciones con Object#raise :
+
+bc. raise ArgumentError, "Name too big", caller
+
 h1. Ruby Koans
 
 Son ejercicios para aprender/practicar Ruby. Aconsejables para cualquier nivel. Tiene también ejercicios sobre metaprogramación.
@@ -724,7 +760,7 @@ h1. Introduccion a Rails
 * MVC separa diferentes partes de la lógica de la aplicación en secciones en función de para que son usadas. En Rails esto está dividido en diferentes directorios.
 * Rails valora "convención sobre configuración"-- la plataforma toma ciertas assumptions de como vas a construir la aplicación. Esto hace que algunas las tareas que sigan sus convenciones sean muy sencillas y las que no sigan las convenciones de Rails lleven un poco más de trabajo.
 
-h1. Un Apliación en Rails de Ejemplo
+h1. Un Ampliación en Rails de Ejemplo
 
 Para empezar tipear:
 

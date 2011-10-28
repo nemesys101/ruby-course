@@ -60,7 +60,7 @@
 <h1>Agenda del Día</h1><ul>
 	<li>9:00 <strong>Presentaciones</strong></li>
 	<li>9:30 &#8211; 13:00 <strong>Instalación del ambiente de trabajo</strong></li>
-	<li>10:30 -11:30 <strong>Introduction to Ruby</strong></li>
+	<li>10:30 -11:30 <strong>Introducción a Ruby</strong></li>
 	<li>11:30 -12:00 <strong>Ruby Koans</strong></li>
 	<li>12:00 -1:00 <strong>Almuerzo</strong></li>
 	<li>1:00 &#8211; <strong>Rails parte 1</strong></li>
@@ -76,16 +76,15 @@
 	<li>Instalando el ambiente de trabajo</li>
 	<li>Sintaxis y operaciones simples en Ruby
 	<ul>
-		<li>Objectos, clases y metodos</li>
+		<li>Objetos, clases, modulos y metodos</li>
+		<li>Testing en Ruby</li>
 		<li>Bloques y estructuras de control</li>
-		<li>Metaprogramming, tainting, reflection y marshaling // ver como colocar esta parte, solo una idea de que esto existe</li>
+		<li>Expresiones regulares</li>
+		<li>Excepciones</li>
 	</ul></li>
-	<li>Testing en Ruby</li>
 	<li>Una introducción a Rails
 	<ul>
-		<li>Cómo usar la maquinaria de Rails para manipular datos en la aplicación** Validación de datos en Rails</li>
-		<li>Mostrando datos en Rails</li>
-		<li>Usando scaffolding para comenzar una aplicación simple</li>
+		<li>&#8230;</li>
 	</ul></li>
 </ul>
 
@@ -94,21 +93,31 @@
 <h1>Ruby</h1><ul>
 	<li>Originado en Japon a mediados de los 90, su creador es Yukihiro &#8220;Matz&#8221; Matsumoto. Está inspirado en Perl, Lisp entre otros lenguajes</li>
 	<li>&#8220;I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python. That&#8217;s why I decided to design my own language&#8221;.</li>
-	<li>Ruby es un lenguaje dinamico, reflexivo, orientado a objetos</li>
+	<li>Ruby es un lenguaje
+	<ul>
+		<li>dinamico</li>
+		<li>reflexivo</li>
+		<li>orientado a objetos</li>
+		<li>open source</li>
+	</ul></li>
 	<li>Hay diferentes implementaciones del lenguaje
 	<ul>
 		<li>MRI (mat&#8217;z ruby interpreter) es la referencia que hay de Ruby. Está escrito en C</li>
 		<li>JRuby es una implementación hecha en Java</li>
 		<li>IronRuby corre sobre .NET. Es desarrollado por Microsoft bajo la Apache License.</li>
-		<li>Rubinius es hecha en Ruby</li>
-		<li>Otros</li>
+		<li>Rubinius esta hecho en Ruby</li>
+	</ul></li>
+	<li>Versiones
+	<ul>
+		<li>1.8.7</li>
+		<li>1.9.2 &lt;&#8212; recomendada</li>
 	</ul></li>
 </ul>
 
 </div>
 <div class='slide '>
 <h1>Porque Ruby?</h1><ul>
-	<li>Fácil de aprender</li>
+	<li>&#8220;Lenguajes de Programación deben sentirse natural para los programadores.&#8221;</li>
 	<li>La comunidad de Ruby en Montevideo está creciendo</li>
 	<li>Tiene RubyGems que es el sistema usado para empaquetar y distribuir código Ruby</li>
 	<li>Rails es un web framework bastante popular construido sobre Ruby</li>
@@ -151,6 +160,11 @@
 			<li>mirar rvm help para ver que más se puede hacer</li>
 		</ul></li>
 	</ul></li>
+</ul>
+
+</div>
+<div class='slide '>
+<h1>Instalando el ambiente de trabajo</h1><ul>
 	<li>En Windows
 	<ul>
 		<li>PIK: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
@@ -166,18 +180,30 @@
 				<li><code>ruby -v</code></li>
 			</ul></li>
 		</ul></li>
+		<li>Ó Ruby Installer: Un ejecutable que instala Ruby y Ruby Gems
+		<ul>
+			<li>Descargar la ultima verisón de http://rubyinstaller.org</li>
+			<li>Seguir los pasos de la instalación</li>
+			<li>Instalar pik mediante @gem install pik</li>
+		</ul></li>
 	</ul></li>
 </ul>
 
 </div>
 <div class='slide '>
 <h1>Instalando el ambiente de trabajo</h1><ul>
-	<li>Rails: Vamos a usar la version 3.XX
+	<li>Instalar Ruby Gems
 	<ul>
-		<li>En Linux</li>
-		<li>En Windows</li>
-		<li>En Mac</li>
+		<li>En Linux
+		<ul>
+			<li>@apt-get install rubygems</li>
+		</ul></li>
+		<li>En Windows RubyInstaller ya viene con Ruby Gems</li>
 	</ul></li>
+	<li>Rails: Vamos a usar la version 3.1
+		<ul>
+			<li>@gem install rails</li>
+		</ul></li>
 </ul>
 <ul>
 	<li>Editores: Trabajen en el que se sientan más comodos
@@ -188,6 +214,7 @@
 		<li>Gedit</li>
 		<li>Eclipse</li>
 		<li>NetBeans</li>
+		<li>RubyMine</li>
 	</ul></li>
 </ul>
 
@@ -231,8 +258,8 @@
 		<td> <code>{:chicken =&gt; "chicken", :sillyexample =&gt; :chicken}</code> </td>
 	</tr>
 </table>
-<p>En Ruby TODO es un objeto. El tipo del objeto es definido por lo que el objeto puede hacer. A esto le llamamos &#8220;duck typing&#8221;. Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.</p>
-<p>Juega con la terminal!</p>
+<p>En Ruby <i>casi todo</i> es un objeto. A un objeto se le puede neviar los mensajes a los que el objeto puede responder. A grandes rasgos a esto le llamamos &#8220;duck typing&#8221;. Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
+Juega con la terminal!</p>
 
 </div>
 <div class='slide '>
@@ -245,238 +272,7 @@
 	<li>En Ruby <code>name.lenght</code></li>
 </ul>
 <p>Le enviamos un mensaje al propio objeto. Y lo mismo aplica a toods los objetos en Ruby.</p>
-<p>En Ruby, NIL es un objeto que representa nada.</p>
-
-</div>
-<div class='slide '>
-<h1>Operaciones Basicas en Ruby</h1><table>
-	<tr>
-		<td> <code>2 + 2</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>3 * 3</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".reverse</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".length</code>  </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 4</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 5</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>[1 , 2, 3].include?(2)</code> </td>
-		<td> </td>
-	</tr>
-</table>
-
-</div>
-<div class='slide '>
-<h1>Operaciones Basicas en Ruby</h1><table>
-	<tr>
-		<td> <code>2 + 2</code> </td>
-		<td> <code>4</code> </td>
-	</tr>
-	<tr>
-		<td> <code>3 * 3</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".reverse</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".length</code>  </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 4</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 5</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>[1 , 2, 3].include?(2)</code> </td>
-		<td> </td>
-	</tr>
-</table>
-
-</div>
-<div class='slide '>
-<h1>Operaciones basicas en ruby</h1><table>
-	<tr>
-		<td> <code>2 + 2</code> </td>
-		<td> <code>4</code> </td>
-	</tr>
-	<tr>
-		<td> <code>3 * 3</code> </td>
-		<td> <code>9</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".reverse</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".length</code>  </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 4</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 5</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>[1 , 2, 3].include?(2)</code> </td>
-		<td> </td>
-	</tr>
-</table>
-
-</div>
-<div class='slide '>
-<h1>Operaciones basicas en ruby</h1><table>
-	<tr>
-		<td> <code>2 + 2</code> </td>
-		<td> <code>4</code> </td>
-	</tr>
-	<tr>
-		<td> <code>3 * 3</code> </td>
-		<td> <code>9</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".reverse</code> </td>
-		<td> <code>"nekcihc"</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".length</code>  </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 4</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 5</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>[1 , 2, 3].include?(2)</code> </td>
-		<td> </td>
-	</tr>
-</table>
-
-</div>
-<div class='slide '>
-<h1>Operaciones basicas en ruby</h1><table>
-	<tr>
-		<td> <code>2 + 2</code> </td>
-		<td> <code>4</code> </td>
-	</tr>
-	<tr>
-		<td> <code>3 * 3</code> </td>
-		<td> <code>9</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".reverse</code> </td>
-		<td> <code>"nekcihc"</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".length</code>  </td>
-		<td> <code>7</code> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 4</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 5</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>[1 , 2, 3].include?(2)</code> </td>
-		<td> </td>
-	</tr>
-</table>
-
-</div>
-<div class='slide '>
-<h1>Operaciones basicas en ruby</h1><table>
-	<tr>
-		<td> <code>2 + 2</code> </td>
-		<td> <code>4</code> </td>
-	</tr>
-	<tr>
-		<td> <code>3 * 3</code> </td>
-		<td> <code>9</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".reverse</code> </td>
-		<td> <code>"nekcihc"</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".length</code>  </td>
-		<td> <code>7</code> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 4</code> </td>
-		<td> <code>true</code> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 5</code> </td>
-		<td> </td>
-	</tr>
-	<tr>
-		<td> <code>[1, 2, 3].include?(2)</code> </td>
-		<td> </td>
-	</tr>
-</table>
-
-</div>
-<div class='slide '>
-<h1>Operaciones basicas en ruby</h1><table>
-	<tr>
-		<td> <code>2 + 2</code> </td>
-		<td> <code>4</code> </td>
-	</tr>
-	<tr>
-		<td> <code>3 * 3</code> </td>
-		<td> <code>9</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".reverse</code> </td>
-		<td> <code>"nekcihc"</code> </td>
-	</tr>
-	<tr>
-		<td> <code>"chicken".length</code>  </td>
-		<td> <code>7</code> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 4</code> </td>
-		<td> <code>true</code> </td>
-	</tr>
-	<tr>
-		<td> <code>2 + 2 == 5</code> </td>
-		<td> <code>false</code> </td>
-	</tr>
-	<tr>
-		<td> <code>[1, 2, 3].include?(2)</code> </td>
-		<td> </td>
-	</tr>
-</table>
+<p>En Ruby, NIL es un objeto que representa ausencia de valor.</p>
 
 </div>
 <div class='slide '>
@@ -517,14 +313,15 @@ Y <code>"puppy".include?("p")</code>?</p>
 <div class='slide '>
 <h1>Interpolación de Expresiones</h1><p>Algo que Ruby hace con strings entre comillas dobles es interpolacion de expresiones. Es decir, dentro de un string la secuencia #{expression} es reemplazada por el valor de la expresión.</p>
 <p>Por ejemplo, prueba</p>
-<p><code>"Nuestro array es #{[1,2,3]}"</code></p>
+<pre><code>@"Nuestro array es #{[1,2,3]}"@</code></pre>
 <p>Ó</p>
 <pre><code>var = [1,2,3,4,5,6]
 "Nuestro array es #{var}"</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Variables</h1><p>Qué pasa en cada paso?</p>
+<h1>Variables</h1><p>Las variables son implícitas y declaradas.</p>
+<p>Qué pasa en cada paso?</p>
 <pre><code>thing = "chicken"
 thing
 thing.reverse
@@ -542,17 +339,19 @@ Esto es una convención de Ruby, pero una buena a seguir.</p>
 
 </div>
 <div class='slide '>
-<h1>Convenciones para Variables</h1><ul>
+<h1>Convenciones para Variables y Alcance</h1><ul>
 	<li>locales:  comienzan con minuscula o guion bajo</li>
 	<li>globales: comienzan con $</li>
 	<li>de instancia: comienzan con @</li>
 	<li>de clase: comienzan con @@</li>
 	<li>de más de una palabra se escriben con guion bajo. Ej. user_name</li>
+	<li>constantes en mayuscula</li>
 </ul>
+<p>Hay tres lugares donde el alcance cambia: las definiciones de clases (class), las definiciones de modulos (module) y los metodos (def)</p>
 
 </div>
 <div class='slide '>
-<h1>Simbolos</h1><p>Son nombres de constantes que no hay que pre-declarar y que son únicas. Empieza con <code>:</code> y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el simbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.</p>
+<h1>Simbolos</h1><p>Son etiquetas que no hay que pre-declarar y que son únicas. Empieza con <code>:</code> y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el simbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.</p>
 <p>Por ejemplo:</p>
 <ul>
 	<li><code>:norte</code></li>
@@ -562,6 +361,7 @@ Esto es una convención de Ruby, pero una buena a seguir.</p>
 </div>
 <div class='slide '>
 <h1>Hashes</h1><ul>
+	<li>También es un tipo built-in.</li>
 	<li>Al igual que los arrays son colecciones indexadas.</li>
 	<li>Las llaves de los arrays deben ser integer pero los hashes pueden tener cualquier objeto como llave.</li>
 	<li>Pueden contener diferentes tipos de elemento en el mismo array/hash.</li>
@@ -573,9 +373,8 @@ Esto es una convención de Ruby, pero una buena a seguir.</p>
   frutilla: "rojo",
   banana:   "amarillo
 }</code></pre>
-<p><code>frutas_color[:frutilla]</code></p>
-<p>produce</p>
-<p><code>"rojo"</code></p>
+<p><code>frutas_color[:frutilla]</code> produce <code>"rojo"</code></p>
+<p>También conocidos como Map, Associative Array, Dictionary, Key/Value Pair Store</p>
 
 </div>
 <div class='slide '>
@@ -619,7 +418,8 @@ Esto es una convención de Ruby, pero una buena a seguir.</p>
 <div class='slide '>
 <h1>Objetos</h1><p>Nuevamente, todo lo que manipulas en Ruby es un objeto y los resultados de esas manipulaciones tambien son objetos. Cada objeto tiene un identificador único.</p>
 <p>Un objeto son los datos asi como tambien los metodos que se le puede aplicar.</p>
-<p>Como sabemos de qu tipo es un objeto? Sólo hay que preguntarle!</p>
+<p>Un objeto es una estructura con identidad, estado y un comportamiento definidos.</p>
+<p>Como averiguamos la clase origen de un objeto? Sólo hay que preguntarle!</p>
 <p><code>40.class</code></p>
 
 </div>
@@ -677,14 +477,28 @@ c.value</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Classes</h1><p>Usemos nuestra clase Counter:</p>
+<h1>Clases &amp; Metodos</h1><p>Estas definiciones de un metodo son equivalentes:</p>
+<pre><code>def increment x
+    x + 1
+  end</code>
+
+<code>  def increment(x)
+    return x + 1;
+  end</code>
+
+<code>  def increment(x); x + 1; end
+end</code></pre>
+
+</div>
+<div class='slide '>
+<h1>Clases</h1><p>Usemos nuestra clase Counter:</p>
 <pre><code>count = Counter.new
 count.increment
 count.increment
 count.value</code></pre>
 <pre><code>count.class
 count.methods.sort
-count.responde_to?(:increment)</code></pre>
+count.respond_to?(:increment)</code></pre>
 
 </div>
 <div class='slide '>
@@ -704,7 +518,7 @@ c.value</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Classes</h1><p>También se puede agregar metodos a clases ya existentes:</p>
+<h1>Clases</h1><p>También se puede agregar metodos a clases ya existentes:</p>
 <pre><code>class String
   def chicken?
     self == "chicken"
@@ -733,6 +547,19 @@ end</code></pre>
 
 </div>
 <div class='slide '>
+<h1>Modulos</h1><p>Un modulo es básicamente una clase que no puede ser instanciada.</p>
+
+</div>
+<div class='slide '>
+<h1>Control de Acceso</h1><p>Ruby tiene tres niveles de protección para constantes y mteodos de clase y modulo.</p>
+<ul>
+	<li>private. Accesible para todo el mundo.</li>
+	<li>protected. Puede ser sólo invocado por objetos la clase definida y sus subclases.</li>
+	<li>public. Puede ser solo llamado en una forma funcional (con un self implicito). Por lo tanto metodos privados solo pueden ser llamados en la clase definida y por los ancestros y descendientes de la clase, pero solo dentro del mismo objeto.</li>
+</ul>
+
+</div>
+<div class='slide '>
 <h1>Testing</h1><p>Automatizar cualquier tarea que se pueda hacer más de una vez es una sabia decisión.</p>
 <ul>
 	<li>no tener que pasar horas buscando un bug en el código que se escribio hace meses</li>
@@ -743,7 +570,7 @@ end</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Testing</h1><p>Ahora escribiremos una clase para testearlo automaticamente.</p>
+<h1>Testing</h1><p>Ahora escribiremos una clase para testearlo automáticamente.</p>
 <pre><code>require 'test/unit'
   require 'counter'
   class TestCounter &lt; Test::Unit::TestCase
@@ -768,7 +595,7 @@ end</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Más sobre las clases build-in Ruby</h1><p><a href="http://rubydoc.info/stdlib/core">http://rubydoc.info/stdlib/core/</a></p>
+<h1>Más sobre las clases built-in Ruby</h1><p><a href="http://rubydoc.info/stdlib/core">http://rubydoc.info/stdlib/core/</a></p>
 <p>Otras son: Array, Enumerable, Fixnum, Float, Hash, NilClass, String, Time</p>
 
 </div>
@@ -778,7 +605,7 @@ end</code></pre>
 <pre><code>list = [1,2,3,4]
 list.each { |n| puts (n + 1) }</code></pre>
 <ul>
-	<li>Un <strong>bloque</strong> es un pedazo de código</li>
+	<li>Un <strong>bloque</strong> es un pedazo de código asociado a un contexto de variables.</li>
 	<li>Puede tener dos sintaxis
 	<ul>
 		<li>Cuando es sólo una linea <code>{ |arg1, arg2, ..| code }</code></li>
@@ -828,12 +655,46 @@ Fin del metodo</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Expresiones Regulares</h1><ul>
-	<li>Las tiene build-in en el lenguaje</li>
-	<li>La sintaxis es /pattern/</li>
-	<li>Una expresión regular también es un objeto</li>
+<h1>Lambdas y Procs</h1><p>Los bloques no son objetos pero pueden ser convertidos en objectos mediante la clase Proc.  Hay varias formas de convertir un bloque en un objeto Proc:</p>
+<ul>
+	<li>Pasando un bloque a un metodo cuyo último parametro es prefijado con un ampersand.</li>
 </ul>
-<p>Por ejemplo, /P(ython|erl)/ saca los strings que contengan Python o Perl</p>
+<pre><code>def metodo(p1, p2, &amp;bloque)
+  puts bloque.inspect
+end
+metodo(1,2) { "un bloque" }
+metodo(3,4)</code></pre>
+<ul>
+	<li>Llamando Proc.new</li>
+</ul>
+<pre><code>Proc.new{ "un bloque" }</code></pre>
+
+</div>
+<div class='slide '>
+<h1>Lambdas y Procs</h1><ul>
+	<li>Llamando a el metodo Object#lambda asocia un bloque con la llamada lambda{ &#8220;un bloque&#8221; }</li>
+</ul>
+<ul>
+	<li>En 1.9 usando la sintaxis</li>
+</ul>
+<pre><code>lam =-&gt;(p1,p2) {p1 + p2}
+lam.call(4,3)</code></pre>
+
+</div>
+<div class='slide '>
+<h1>Lambdas y Procs</h1><p>Diferencias entre Procs y Lambdas:</p>
+<ul>
+	<li>Return keyword.
+	<ul>
+		<li>En un lambda, return retorna desde el lambda.</li>
+		<li>En un proc el return retorna desde el alcance donde el proc fue definido.</li>
+	</ul></li>
+	<li>Argumentos.
+	<ul>
+		<li>Si se llama a un lambda con una aridad incorrecta entonces falla con ArgumentError.</li>
+		<li>Los Proc son más flexibles y toman la cantidad de argumentos necesaria llenando los no dados con nil.</li>
+	</ul></li>
+</ul>
 
 </div>
 <div class='slide '>
@@ -843,9 +704,8 @@ Fin del metodo</code></pre>
   1
 else 
   2
-end</code>
-
-<code>ó</code></pre>
+end</code></pre>
+<p>ó</p>
 <pre><code>código if true</code></pre>
 
 </div>
@@ -856,6 +716,46 @@ end</code>
 end</code></pre>
 <p>ó</p>
 <pre><code>some_code while true</code></pre>
+
+</div>
+<div class='slide '>
+<h1>Iteradores</h1><pre><code>3.times{ puts "Hola mundo!" }</code></pre>
+<pre><code>5.downto(1){|i| puts "Cuenta regresiva #{i}."}</code></pre>
+<pre><code>animals = ["gato", "perro", "caballo"]
+animals.each do |animal|
+  puts "Tenemos un #{animal}."
+end</code></pre>
+<pre><code>my_hash = {:type =&gt; "cat",
+              :name =&gt; "Beckett",
+	      :breed =&gt; "alley cat"}
+my_hash.each do |key, value|
+  puts "My #{key.to_s} is #{value}" 
+end</code></pre>
+<pre><code>my_hash.each_pair{|k,v| puts "key: #{k} con su valor #{v}"}</code></pre>
+
+</div>
+<div class='slide '>
+<h1>Expresiones Regulares</h1><ul>
+	<li>Ruby las tiene built-in en el lenguaje</li>
+	<li>La sintaxis es /pattern/</li>
+	<li>Una expresión regular también es un objeto. Son instancias de la clase Regexp</li>
+</ul>
+<p>Por ejemplo, /P(ython|erl)/ matchea los strings que contengan Python o Perl</p>
+
+</div>
+<div class='slide '>
+<h1>Excepciones</h1><p>Información de una excepción viene encapsulada en un objeto de clase Exception o alguno de sus &#8220;hijos&#8221;.</p>
+<p>Para manejar excepciones:</p>
+<pre><code>begin
+# .. procesar
+rescue
+# .. manejar el error
+ensure
+# ..codigo que siempre se ejecuta (por ejemplo f.close para un archivo f)
+end</code>
+
+<code>Para levantar excepciones con Object#raise :</code></pre>
+<pre><code>raise ArgumentError, "Name too big", caller</code></pre>
 
 </div>
 <div class='slide '>
@@ -875,7 +775,7 @@ end</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Un Apliación en Rails de Ejemplo</h1><p>Para empezar tipear:</p>
+<h1>Un Ampliación en Rails de Ejemplo</h1><p>Para empezar tipear:</p>
 <ol>
 	<li><code>cd microrant</code></li>
 	<li><code>bundle install</code></li>
