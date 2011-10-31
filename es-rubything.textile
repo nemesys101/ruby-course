@@ -866,7 +866,7 @@ h1. Ejercicios
 
 Algunas personas estan escribiendo rants en minusculas! 
 
-Vamos a escribir un metodo para convertir todos los rants a miyusuculas Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
+Vamos a escribir un metodo para convertir todos los rants a mayúsuculas. Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
 
 bc. class Rant < ActiveRecord::Base
 before_save :convert_message_to_uppercase
@@ -879,7 +879,7 @@ Una vez que lo hicieron prueben escribir un rant en minusculas para ver que pasa
 
 h1. Ejercicios
 
-Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consola de Rails y escriban un programa que cree un hash que contenga mensajes rant jungo con el nombre del usuario que lo escribio.
+Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consola de Rails y escriban un programa que cree un hash que contenga mensajes rant junto con el nombre del usuario que lo escribio.
 
 Como era que se creaba un Hash?
 * Vimos @Hash.new@ pero también se puede crear con @{}@.
