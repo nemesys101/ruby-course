@@ -60,9 +60,10 @@ ul { list-style-type: square; }
 
 pre { font-size: 16pt;  }
 
-.code { 
+code { 
         background-color: azure;
         padding: 5px;
+        font-family: 'Bitstream Vera Sans Mono','Courier New',monospace;
       }
      
 .footnote a:first-of-type  { text-decoration: none; }
@@ -101,4 +102,3 @@ table td {
     padding: .5em;
     border: 1px solid #ccc;
 }
-

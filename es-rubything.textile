@@ -148,7 +148,7 @@ h1.  Abriendo el interprete de Ruby
 
 Abrir una terminal y ejecutar irb. 
 
-Desde hace poco también existe pry y pueden bajarlo desde XX (diferencia???
+Desde hace poco también existe pry (http://pry.github.com/) que es un poco más cómodo particularmente para debuggear y sobre todo si es es bastante código.
 
 Jugar un poco:
 
@@ -172,7 +172,7 @@ h1. Datos Básicos de Ruby
 |Arrays  | @[1, 7, "cake"]@ |
 |Hashes  | @{:chicken => "chicken", :sillyexample => :chicken}@ |
 
-En Ruby __casi todo__ es un objeto. A un objeto se le puede neviar los mensajes a los que el objeto puede responder. A grandes rasgos a esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
+En Ruby __casi todo__ es un objeto. A un objeto se le puede enviar los mensajes a los que el objeto puede responder. A grandes rasgos a esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
 Juega con la terminal!
 
 % Esto no está muy claro <<--- MIRAR COMO INCLUIR LA EIGENCLASS
@@ -199,7 +199,7 @@ Juega con la terminal!
 h1. Datos Básicos en Ruby
 
 * En Java @min = Math.abs(num)@
-* En Ruby @postive = num.abs@ 
+* En Ruby @positivo = num.abs@ 
 
 * En C @strlen(name)@
 * En Ruby @name.lenght@
@@ -250,9 +250,9 @@ h1. Variables
 
 Intenten.
 
-bc. awesomelist = [5,2,1,8]
-awesomelist.sort!
-awesomelist
+bc. listagenial = [5,2,1,8]
+listagenial.sort!
+listagenial
 
 Como paso esto? Acciones que terminen con un @!@ "cambian" los datos!
 Esto es una convención de Ruby, pero una buena a seguir.
@@ -306,9 +306,9 @@ Consideremos un sistema de rating de libros:
 Crea un hash y agregale algunos libros, por ejemplo:
 
 bc. books = { "Left Hand of Darkness"        => 5,
-              "The Word for World Is Forest" => 5,
-              "Nevermind the Pollacks"       => 0,
-              "Only Revolutions"             => :not_rated 
+            "The Word for World Is Forest" => 5,
+            "Nevermind the Pollacks"       => 0,
+            "Only Revolutions"             => :not_rated 
 	    }
 
 h1. Hashes
@@ -377,7 +377,7 @@ h1. Clases & Metodos
 Aprendemos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
-attr_accessor :value
+  attr_accessor :value
 end
 
 p. Ahora intentemos
@@ -433,14 +433,14 @@ h1. Clases & Metodos
 Estas definiciones de un metodo son equivalentes:
 
 bc.. def increment x
-    x + 1
-  end
+   x + 1
+end
 
-  def increment(x)
-    return x + 1;
-  end
+def increment(x)
+  return x + 1;
+end
 
-  def increment(x); x + 1; end
+def increment(x); x + 1; end
 end
 
 h1. Clases
@@ -511,6 +511,7 @@ bc. class Counter
   def increment_by(n)
     @value = @value + n
   end
+end
 
 En la consola: @require 'path_to_your_file'@
 
@@ -520,7 +521,7 @@ Un modulo es básicamente una clase que no puede ser instanciada.
 
 h1. Control de Acceso
 
-Ruby tiene tres niveles de protección para constantes y mteodos de clase y modulo.
+Ruby tiene tres niveles de protección para constantes y metodos de clase y modulo.
 
 * private. Accesible para todo el mundo.
 * protected. Puede ser sólo invocado por objetos la clase definida y sus subclases.
@@ -540,12 +541,12 @@ h1. Testing
 Ahora escribiremos una clase para testearlo automáticamente.
 
 bc. require 'test/unit'
-  require 'counter'
-  class TestCounter < Test::Unit::TestCase
-    def test_increment
-      assert_equal(1, Counter.new().increment())
-    end
+require 'counter'
+class TestCounter < Test::Unit::TestCase
+  def test_increment
+    assert_equal(1, Counter.new().increment())
   end
+end
 
 Escribanlo en un archivo test_counter.rb y ejecutenlo.
 
@@ -610,7 +611,7 @@ Y en caso que el bloque tenga más de una linea
 bc. reviews = Hash.new(0)
 books.values.each do |rate|
   reviews[rate] = reviews[rate] + 1
-  # more code can go here...
+  # se puede poner más código aquí
 end
 
 h1. Bloques y Callbacks
@@ -667,8 +668,23 @@ Diferencias entre Procs y Lambdas:
 * Return keyword. 
 ** En un lambda, return retorna desde el lambda. 
 ** En un proc el return retorna desde el alcance donde el proc fue definido.
+bc.def foo
+  f = Proc.new { return "retorna desde foo desde adentro del proc" }
+  f.call # Salimos de foo
+  return "retorna desde foo"
+end
+def bar
+  f = lambda { return "retorna desde bar desde adentro del lambda" }
+  f.call # No sale de bar
+  return "retorna desde bar"
+end
+
+h1. Lambdas y Procs
+
+Diferencias entre Procs y Lambdas:
+
 * Argumentos. 
-** Si se llama a un lambda con una aridad incorrecta entonces falla con ArgumentError. 
+** Si se llama a un lambda con una cantidad incorrecta de argumentos entonces falla con ArgumentError. 
 ** Los Proc son más flexibles y toman la cantidad de argumentos necesaria llenando los no dados con nil.
 
 h1. Estructuras de Control
@@ -692,7 +708,7 @@ h1. Estructuras de control
 Sintaxis while
 
 bc. while true
-  do some code
+  algo de código
 end
 
 ó
@@ -710,11 +726,11 @@ animals.each do |animal|
   puts "Tenemos un #{animal}."
 end
 
-bc.. my_hash = {:type => "cat",
-              :name => "Beckett",
-	      :breed => "alley cat"}
+bc.. my_hash = {:tipo => "cat",
+              :nombre => "Beckett",
+	      :raza => "alley cat"}
 my_hash.each do |key, value|
-  puts "My #{key.to_s} is #{value}" 
+  puts "Mi #{key.to_s} ie #{value}" 
 end
 
 bc. my_hash.each_pair{|k,v| puts "key: #{k} con su valor #{v}"}
